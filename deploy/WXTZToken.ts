@@ -1,8 +1,9 @@
 import assert from 'assert'
+import { writeFileSync } from 'fs'
 
 import { type DeployFunction } from 'hardhat-deploy/types'
 
-const contractName = 'MyOFT'
+const contractName = 'WXTZToken'
 
 const deploy: DeployFunction = async (hre) => {
     const { getNamedAccounts, deployments } = hre
@@ -33,19 +34,25 @@ const deploy: DeployFunction = async (hre) => {
     // }
     const endpointV2Deployment = await hre.deployments.get('EndpointV2')
 
-    const { address } = await deploy(contractName, {
-        from: deployer,
-        args: [
-            'MyOFT', // name
-            'MOFT', // symbol
-            endpointV2Deployment.address, // LayerZero's EndpointV2 address
-            deployer, // owner
-        ],
-        log: true,
-        skipIfAlreadyDeployed: false,
-    })
+    const Token = await hre.ethers.getContractFactory("WXTZToken")
+    const token = await Token.deploy(
+        deployer,
+        endpointV2Deployment.address,
+    );
+    const address = await token.address;
 
     console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
+
+    writeFileSync(
+        `./deployments/${hre.network.name}.json`,
+        JSON.stringify(
+            {
+                WXTZToken: address,
+            },
+            null,
+            2
+        )
+    );
 }
 
 deploy.tags = [contractName]
