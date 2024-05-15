@@ -4,7 +4,7 @@ import { BigNumber, Contract, ContractFactory } from 'ethers'
 import { deployments, ethers } from 'hardhat'
 
 
-describe('MyOFT Test', function () {
+describe('WXTZ Test', function () {
     // Constant representing a mock Endpoint ID for testing purposes
     const eidA = 1
     const eidB = 2
