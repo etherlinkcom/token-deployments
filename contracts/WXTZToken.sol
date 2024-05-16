@@ -7,7 +7,7 @@ import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 /**
 * @title WXTZ Token
 * @dev This token contract aims to emulate the WETH9 contract on Ethereum mainnet.
-* It inherits from the OFT standard to allow for briding across EVM chains.
+* It inherits from the OFT standard to allow for briding across EVM chains via LayerZero.
 */
 contract WXTZToken is OFT {
     string private _name        = "Wrapped XTZ";
@@ -27,14 +27,16 @@ contract WXTZToken is OFT {
     ) OFT(_name, _symbol, _lzEndpoint, _owner) Ownable(_owner) {}
 
   /**
-   * @dev Exchange XTZ for WXTZ by appending XTZ in the 'value' parameter of the sendTransaction call
+   * @dev Exchange XTZ for the same amount of WXTZ
+   * The amount of XTZ to exchange is defined in the 'value' parameter of the sendTransaction call
    */
     receive() external payable {
         deposit();
     }
 
     /**
-    * @dev Exchange XTZ for WXTZ by appending XTZ in the 'value' parameter of the sendTransaction call
+    * @dev Exchange XTZ for the same amount of WXTZ
+    * The amount of XTZ to exchange is defined in the 'value' parameter of the sendTransaction call
     */
     function deposit() public payable {
         _mint(msg.sender, msg.value);
@@ -42,8 +44,8 @@ contract WXTZToken is OFT {
     }
 
     /**
-    * @dev Exchange WXTZ for XTZ
-    * @param wad The amount of WXTZ to exchange
+    * @dev Exchange WXTZ for the same amount of XTZ
+    * @param wad The amount of WXTZ to exchange for XTZ
     */
     function withdraw(uint wad) public {
         require(balanceOf(msg.sender) >= wad);
