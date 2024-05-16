@@ -59,6 +59,10 @@ const config: HardhatUserConfig = {
     ],
   },
   networks: {
+    hardhat: {
+      gasPrice: 0,
+      initialBaseFeePerGas: 0
+    },
     sepolia: {
       eid: EndpointId.SEPOLIA_V2_TESTNET,
       url: process.env.RPC_URL_SEPOLIA || 'https://rpc.sepolia.org/',
