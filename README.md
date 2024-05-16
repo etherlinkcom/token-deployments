@@ -43,3 +43,5 @@ To verify your contract, run the following command:
 ```
 npx hardhat verify <YOUR_CONTRACT_ADDRESS> <YOUR_CONTRACT_CONSTRUCTOR_ARGS> --network <DESIRED_NETWORK>
 ```
+
+For now, only testnet is supported, so you should use `--network etherlinkTestnet`.
