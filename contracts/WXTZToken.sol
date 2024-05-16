@@ -48,7 +48,8 @@ contract WXTZToken is OFT {
     function withdraw(uint wad) public {
         require(balanceOf(msg.sender) >= wad);
         _burn(msg.sender, wad);
-        payable(msg.sender).transfer(wad);
+        (bool sent,) = payable(msg.sender).call{value: wad}("");
+        require(sent, "Failed to send Ether");
         emit Withdrawal(msg.sender, wad);
     }
 }
