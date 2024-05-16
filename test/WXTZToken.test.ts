@@ -63,9 +63,9 @@ describe('WXTZ Test', function () {
         await myOFTB.connect(ownerB).setPeer(eidA, ethers.utils.zeroPad(myOFTA.address, 32))
     })
 
-    // A test case to verify token transfer functionality
+    // A test case to verify token deposit and withdraw functionality
     it('should be able to deposit and withdraw XTZ for WXTZ', async function () {
-        // Minting an initial amount of tokens to ownerA's address in the myOFTA contract
+        // Check initial balances
         const initialXTZ = await ethers.provider.getBalance(ownerA.address);
         const initialWXTZ = await myOFTA.balanceOf(ownerA.address);
         const initialTotalSupply = await myOFTA.totalSupply()
@@ -73,23 +73,25 @@ describe('WXTZ Test', function () {
         expect(initialWXTZ.toString()).eq("0")
         expect(initialTotalSupply.toString()).eq("0")
 
-        await ownerA.sendTransaction({
+        // Check deposit with non-owner account
+        await ownerB.sendTransaction({
             to: myOFTA.address,
             value: ethers.utils.parseEther("1")
         });
 
-        const depositXTZ = await ethers.provider.getBalance(ownerA.address);
-        const depositWXTZ = await myOFTA.balanceOf(ownerA.address);
+        const depositXTZ = await ethers.provider.getBalance(ownerB.address);
+        const depositWXTZ = await myOFTA.balanceOf(ownerB.address);
 
         expect(depositWXTZ.toString()).eq("1000000000000000000")
 
-        await ownerA.sendTransaction({
+        // Check withdraw with non-owner account
+        await ownerB.sendTransaction({
             to: myOFTA.address,
             data: myOFTA.interface.encodeFunctionData("withdraw", [BigInt("1000000000000000000")])
-        });
+        })
 
-        const withdrawXTZ = await ethers.provider.getBalance(ownerA.address);
-        const withdrawWXTZ = await myOFTA.balanceOf(ownerA.address);
+        const withdrawXTZ = await ethers.provider.getBalance(ownerB.address);
+        const withdrawWXTZ = await myOFTA.balanceOf(ownerB.address);
 
         expect(withdrawWXTZ.toString()).eq("0")
     })
