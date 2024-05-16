@@ -23,58 +23,58 @@ const MNEMONIC = process.env.MNEMONIC
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 
 const accounts: HttpNetworkAccountsUserConfig | undefined = MNEMONIC
-    ? { mnemonic: MNEMONIC }
-    : PRIVATE_KEY
-      ? [PRIVATE_KEY]
-      : undefined
+  ? { mnemonic: MNEMONIC }
+  : PRIVATE_KEY
+    ? [PRIVATE_KEY]
+    : undefined
 
 if (accounts == null) {
-    console.warn(
-        'Could not find MNEMONIC or PRIVATE_KEY environment variables. It will not be possible to execute transactions in your example.'
-    )
+  console.warn(
+    'Could not find MNEMONIC or PRIVATE_KEY environment variables. It will not be possible to execute transactions in your example.'
+  )
 }
 
 const config: HardhatUserConfig = {
-    solidity: {
-        compilers: [
-            {
-                version: '0.8.22',
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
-            {
-                version: '0.4.18',
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
-        ],
-    },
-    networks: {
-        sepolia: {
-            eid: EndpointId.SEPOLIA_V2_TESTNET,
-            url: process.env.RPC_URL_SEPOLIA || 'https://rpc.sepolia.org/',
-            accounts,
-        },
-        etherlinkTestnet: {
-            eid: EndpointId.ETHERLINK_V2_TESTNET,
-            url: process.env.ETHERLINK_TESTNET_URL || "https://node.ghostnet.etherlink.com",
-            chainId: 128123,
-            accounts,
+  solidity: {
+    compilers: [
+      {
+        version: '0.8.22',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
           },
-    },
-    namedAccounts: {
-        deployer: {
-            default: 0, // wallet address of index[0], of the mnemonic in .env
         },
+      },
+      {
+        version: '0.4.18',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
+  networks: {
+    sepolia: {
+      eid: EndpointId.SEPOLIA_V2_TESTNET,
+      url: process.env.RPC_URL_SEPOLIA || 'https://rpc.sepolia.org/',
+      accounts,
     },
+    etherlinkTestnet: {
+      eid: EndpointId.ETHERLINK_V2_TESTNET,
+      url: process.env.ETHERLINK_TESTNET_URL || "https://node.ghostnet.etherlink.com",
+      chainId: 128123,
+      accounts,
+    },
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0, // wallet address of index[0], of the mnemonic in .env
+    },
+  },
 }
 
 export default config
