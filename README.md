@@ -35,3 +35,11 @@ If the contract is an OFT (for now, all tokens are OFTs!), it's best to use the 
 ```
 npx hardhat lz:deploy
 ```
+
+## Verify
+
+To verify your contract, run the following command:
+
+```
+npx hardhat verify <YOUR_CONTRACT_ADDRESS> <YOUR_CONTRACT_CONSTRUCTOR_ARGS> --network <DESIRED_NETWORK>
+```
