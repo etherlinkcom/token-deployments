@@ -9,6 +9,8 @@ import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20P
 * @title WXTZ Token
 * @dev This token contract aims to emulate the WETH9 contract on Ethereum mainnet.
 * It inherits from the OFT standard to allow for briding across EVM chains via LayerZero.
+* It inherits from the ERC20Permit standard for better UX when transferring via a contract (no need to call `approve`).
+* It inherits from the Ownable standard to allow for owner transferability.
 */
 contract WXTZToken is Ownable, ERC20Permit, OFT {
     string private _name        = "Wrapped XTZ";
