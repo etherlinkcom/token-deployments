@@ -38,6 +38,7 @@ const deploy: DeployFunction = async (hre) => {
   const signer = await ethers.getSigner(deployer)
   const token = await Token.connect(signer).deploy(
     endpointV2Deployment.address,
+    deployer,
   );
   const address = await token.address;
 
