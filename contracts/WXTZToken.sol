@@ -22,10 +22,12 @@ contract WXTZToken is Ownable, ERC20Permit, OFT {
     /**
     * @dev The contract constructor
     * @param _lzEndpoint The LayerZero endpoint address
+    * @param _delegate The delegate capable of making OApp configurations inside of the LayerZero endpoint.
     */
     constructor(
-      address _lzEndpoint
-    ) Ownable(msg.sender) ERC20Permit(_name) OFT(_name, _symbol, _lzEndpoint, msg.sender) {}
+      address _lzEndpoint,
+      address _delegate
+    ) Ownable(msg.sender) ERC20Permit(_name) OFT(_name, _symbol, _lzEndpoint, _delegate) {}
 
   /**
    * @dev Exchange XTZ for the same amount of WXTZ
