@@ -3,13 +3,14 @@ pragma solidity 0.8.22;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
+import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 /**
 * @title WXTZ Token
 * @dev This token contract aims to emulate the WETH9 contract on Ethereum mainnet.
 * It inherits from the OFT standard to allow for briding across EVM chains via LayerZero.
 */
-contract WXTZToken is OFT {
+contract WXTZToken is Ownable, ERC20Permit, OFT {
     string private _name        = "Wrapped XTZ";
     string private _symbol      = "WXTZ";
 
@@ -18,13 +19,11 @@ contract WXTZToken is OFT {
 
     /**
     * @dev The contract constructor
-    * @param _owner The owner address of the contract
     * @param _lzEndpoint The LayerZero endpoint address
     */
     constructor(
-      address _owner,
       address _lzEndpoint
-    ) OFT(_name, _symbol, _lzEndpoint, _owner) Ownable(_owner) {}
+    ) Ownable(msg.sender) ERC20Permit(_name) OFT(_name, _symbol, _lzEndpoint, msg.sender) {}
 
   /**
    * @dev Exchange XTZ for the same amount of WXTZ
