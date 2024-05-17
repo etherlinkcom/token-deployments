@@ -6,7 +6,7 @@ import { type DeployFunction } from 'hardhat-deploy/types'
 const contractName = 'WXTZToken'
 
 const deploy: DeployFunction = async (hre) => {
-  const { getNamedAccounts, deployments } = hre
+  const { getNamedAccounts, ethers, deployments } = hre
 
   const { deploy } = deployments
   const { deployer } = await getNamedAccounts()
@@ -35,8 +35,8 @@ const deploy: DeployFunction = async (hre) => {
   const endpointV2Deployment = await hre.deployments.get('EndpointV2')
 
   const Token = await hre.ethers.getContractFactory("WXTZToken")
-  const token = await Token.deploy(
-    deployer,
+  const signer = await ethers.getSigner(deployer)
+  const token = await Token.connect(signer).deploy(
     endpointV2Deployment.address,
   );
   const address = await token.address;
