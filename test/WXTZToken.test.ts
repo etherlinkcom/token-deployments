@@ -51,8 +51,8 @@ describe('WXTZ Test', function () {
         mockEndpointV2B = await EndpointV2Mock.deploy(eidB)
 
         // Deploying two instances of MyOFT contract with different identifiers and linking them to the mock LZEndpoint
-        myOFTA = await MyOFT.deploy(ownerA.address, mockEndpointV2A.address)
-        myOFTB = await MyOFT.deploy(ownerB.address, mockEndpointV2B.address)
+        myOFTA = await MyOFT.connect(ownerA).deploy(mockEndpointV2A.address)
+        myOFTB = await MyOFT.connect(ownerB).deploy(mockEndpointV2B.address)
 
         // Setting destination endpoints in the LZEndpoint mock for each MyOFT instance
         await mockEndpointV2A.setDestLzEndpoint(myOFTB.address, mockEndpointV2B.address)
