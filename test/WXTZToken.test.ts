@@ -3,7 +3,6 @@ import { expect } from 'chai'
 import { BigNumber, Contract, ContractFactory } from 'ethers'
 import { deployments, ethers } from 'hardhat'
 
-
 describe('WXTZ Test', function () {
     // Constant representing a mock Endpoint ID for testing purposes
     const eidA = 1
@@ -61,6 +60,16 @@ describe('WXTZ Test', function () {
         // Setting each MyOFT instance as a peer of the other in the mock LZEndpoint
         await myOFTA.connect(ownerA).setPeer(eidB, ethers.utils.zeroPad(myOFTB.address, 32))
         await myOFTB.connect(ownerB).setPeer(eidA, ethers.utils.zeroPad(myOFTA.address, 32))
+    })
+
+    // Test that the constructor set the correct owner even if it is 
+    it('should be the correct owner', async function () {
+        const newUser = ethers.Wallet.createRandom();
+        // deployed by user A but owner should be new user
+        let newOFT = await MyOFT.connect(ownerA).deploy(mockEndpointV2A.address, newUser.address);
+        const OFTOwner = await newOFT.owner();
+
+        expect(OFTOwner).to.equal(newUser.address);
     })
 
     // A test case to verify token deposit and withdraw functionality
