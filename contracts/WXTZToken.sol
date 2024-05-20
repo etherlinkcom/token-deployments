@@ -12,7 +12,7 @@ import { ERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/ERC2
  * It inherits from the ERC20Permit standard for better UX when transferring via a contract (no need to call `approve`).
  * It inherits from the Ownable standard to allow for owner transferability.
  */
-contract WXTZToken is OFT, ERC20Permit {
+contract WXTZToken is ERC20Permit, OFT {
     string private constant _name = "Wrapped XTZ";
     string private constant _symbol = "WXTZ";
 
