@@ -19,6 +19,11 @@ contract WXTZToken is ERC20Permit, OFT {
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
 
+    modifier onlyEtherlink {
+        require(block.chainid == 128123); // change this for testnet / mainnet
+        _;
+    }
+
     /**
      * @dev The contract constructor
      * @param _lzEndpoint The LayerZero endpoint address
@@ -43,7 +48,7 @@ contract WXTZToken is ERC20Permit, OFT {
      * @dev Exchange XTZ for the same amount of WXTZ
      * The amount of XTZ to exchange is defined in the 'value' parameter of the sendTransaction call
      */
-    function deposit() public payable {
+    function deposit() public payable onlyEtherlink {
         _mint(msg.sender, msg.value);
         emit Deposit(msg.sender, msg.value);
     }
@@ -52,7 +57,7 @@ contract WXTZToken is ERC20Permit, OFT {
      * @dev Exchange WXTZ for the same amount of XTZ
      * @param wad The amount of WXTZ to exchange for XTZ
      */
-    function withdraw(uint wad) public {
+    function withdraw(uint wad) public onlyEtherlink {
         require(balanceOf(msg.sender) >= wad);
         _burn(msg.sender, wad);
         (bool sent, ) = payable(msg.sender).call{ value: wad }("");
