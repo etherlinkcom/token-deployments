@@ -63,7 +63,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       gasPrice: 0,
       initialBaseFeePerGas: 0,
-      chainId: 128123 // override the chain id because some contract have restricted functionnalities on other chain
+      chainId: 128123 // override the chain id because some contract have restricted functionalities on other chain
     },
     sepolia: {
       eid: EndpointId.SEPOLIA_V2_TESTNET,
