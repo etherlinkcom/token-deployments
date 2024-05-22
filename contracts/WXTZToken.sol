@@ -20,7 +20,7 @@ contract WXTZToken is ERC20Permit, OFT {
     event Withdrawal(address indexed src, uint wad);
 
     modifier onlyEtherlink {
-        require(block.chainid == 128123); // change this for testnet / mainnet
+        require(block.chainid == 128123 || block.chainid == 42793);
         _;
     }
 
