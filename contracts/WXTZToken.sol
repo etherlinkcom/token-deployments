@@ -19,6 +19,9 @@ contract WXTZToken is ERC20Permit, OFT {
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
 
+    /**
+     * @dev This modifier can be applied to methods that should only be callable on Etherlink testnet or mainnet.
+     */
     modifier onlyEtherlink {
         require(block.chainid == 128123 || block.chainid == 42793);
         _;
@@ -37,7 +40,7 @@ contract WXTZToken is ERC20Permit, OFT {
     }
 
     /**
-     * @dev Exchange XTZ for the same amount of WXTZ
+     * @dev Exchange XTZ for the same amount of WXTZ. This is only callable on Etherlink testnet or mainnet.
      * The amount of XTZ to exchange is defined in the 'value' parameter of the sendTransaction call
      */
     receive() external payable {
@@ -45,7 +48,7 @@ contract WXTZToken is ERC20Permit, OFT {
     }
 
     /**
-     * @dev Exchange XTZ for the same amount of WXTZ
+     * @dev Exchange XTZ for the same amount of WXTZ. This is only callable on Etherlink testnet or mainnet.
      * The amount of XTZ to exchange is defined in the 'value' parameter of the sendTransaction call
      */
     function deposit() public payable onlyEtherlink {
@@ -54,7 +57,7 @@ contract WXTZToken is ERC20Permit, OFT {
     }
 
     /**
-     * @dev Exchange WXTZ for the same amount of XTZ
+     * @dev Exchange WXTZ for the same amount of XTZ. This is only callable on Etherlink testnet or mainnet.
      * @param wad The amount of WXTZ to exchange for XTZ
      */
     function withdraw(uint wad) public onlyEtherlink {
