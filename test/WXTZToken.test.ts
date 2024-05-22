@@ -163,6 +163,23 @@ describe('WXTZ Test', function () {
     expect(afterSendWXTZOnB.toString()).to.equal(amount.toString());
   });
 
+  // Test that you can't withdraw if you don't have WXTZ even after an empty deposit 
+  it("shouldn't give you XTZ if you don't have WXTZ", async function () {
+    // Check initial balances
+    const initialXTZ = await ethers.provider.getBalance(ownerA.address);
+    const initialWXTZ = await myOFTA.balanceOf(ownerA.address);
+
+    // Try to retrieve XTZ without having WXTZ
+    expect(initialWXTZ.toBigInt()).to.equal(0n);
+    await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
+
+    // Test fake deposit before retrying
+    myOFTA.deposit({ value: 0 });
+    const withdrawWXTZ = await myOFTA.balanceOf(ownerA.address);
+    expect(withdrawWXTZ.toBigInt()).to.equal(0n);
+    await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
+  });
+
   // Test that the deposit without giving XTZ doesn't give you WXTZ
   it("shouldn't give you WXTZ if you don't send XTZ in the call", async function () {
     // Check initial balances
@@ -170,7 +187,7 @@ describe('WXTZ Test', function () {
     const initialWXTZ = await myOFTA.balanceOf(ownerA.address);
 
     // call deposit but without tokens
-    myOFTA.deposit({ value: 0 }); // should revert
+    myOFTA.deposit({ value: 0 });
 
     // Checks balances after the call
     const afterDepositXTZ = await ethers.provider.getBalance(ownerA.address);
@@ -204,12 +221,15 @@ describe('WXTZ Test', function () {
       false // do we want to pay in lz token
     );
 
-    await myOFTA.send(
-      sendParam,
-      estimatedGas, // messaging fee
-      ownerA.address, // refund address
-      { value: estimatedGas.nativeFee } // pay for the destination chain
-    );
+    // Should revert
+    await expect(
+      myOFTA.send(
+        sendParam,
+        estimatedGas, // messaging fee
+        ownerA.address, // refund address
+        { value: estimatedGas.nativeFee } // pay for the destination chain
+      )
+    ).to.be.reverted;
 
     // Check balances after the send on token A and B are 0
     const afterSendWXTZOnA = await myOFTA.balanceOf(ownerA.address);
@@ -217,22 +237,4 @@ describe('WXTZ Test', function () {
     expect(afterSendWXTZOnA.toString()).to.equal('0');
     expect(afterSendWXTZOnB.toString()).to.equal('0');
   });
-
-  // Test that you can't withdraw if you don't have WXTZ even after an empty deposit 
-  it("shouldn't give you tokens if you don't have WXTZ", async function () {
-    // Check initial balances
-    const initialXTZ = await ethers.provider.getBalance(ownerA.address);
-    const initialWXTZ = await myOFTA.balanceOf(ownerA.address);
-
-    // Try to retrieve XTZ without having WXTZ
-    expect(initialWXTZ.toBigInt()).to.equal(0n);
-    // await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
-
-    // Test fake deposit before retrying
-    myOFTA.deposit({ value: 0 });
-    const withdrawWXTZ = await myOFTA.balanceOf(ownerA.address);
-    expect(withdrawWXTZ.toBigInt()).to.equal(0n);
-    // await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
-  });
-
 })
