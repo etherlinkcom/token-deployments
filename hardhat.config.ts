@@ -10,6 +10,7 @@ import 'hardhat-contract-sizer'
 import '@nomiclabs/hardhat-ethers'
 import '@layerzerolabs/toolbox-hardhat'
 import "@nomicfoundation/hardhat-verify";
+// import "@nomicfoundation/hardhat-chai-matchers";
 import { HardhatUserConfig, HttpNetworkAccountsUserConfig } from 'hardhat/types'
 
 import { EndpointId } from '@layerzerolabs/lz-definitions'
@@ -61,7 +62,8 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       gasPrice: 0,
-      initialBaseFeePerGas: 0
+      initialBaseFeePerGas: 0,
+      chainId: 128123 // override the chain id because some contract have restricted functionnalities on other chain
     },
     sepolia: {
       eid: EndpointId.SEPOLIA_V2_TESTNET,
