@@ -8,14 +8,14 @@ import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/O
 import { UUPSUpgradeable } from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 
-contract tzBTCToken is OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable {
+contract tzBTCToken is OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable, OFT {
     string private constant _name = "Tezos Bitcoin";
     string private constant _symbol = "tzBTC";
 
     event Mint(address indexed to, uint amount);
     event Burn(address indexed to, uint amount);
 
-    constructor() {
+    constructor(address _lzEndpoint, address _delegate) OFT(_name, _symbol, _lzEndpoint, _delegate) {
         _disableInitializers();
     }
 
