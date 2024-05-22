@@ -91,10 +91,7 @@ describe('WXTZ Test', function () {
     expect(initialTotalSupply.toString()).eq("0")
 
     // Check deposit with non-owner account leads to correct exchange of XTZ for WXTZ
-    await ownerB.sendTransaction({
-      to: myOFTA.address,
-      value: ethers.utils.parseEther("1")
-    });
+    await myOFTA.connect(ownerB).deposit({ value: ethers.utils.parseEther("1") });
 
     const depositXTZ = await ethers.provider.getBalance(ownerB.address);
     const depositWXTZ = await myOFTA.balanceOf(ownerB.address);
@@ -103,10 +100,7 @@ describe('WXTZ Test', function () {
     expect(depositWXTZ.toString()).eq("1000000000000000000")
 
     // Check withdraw with non-owner account leads to correct exchange of WXTZ for XTZ
-    await ownerB.sendTransaction({
-      to: myOFTA.address,
-      data: myOFTA.interface.encodeFunctionData("withdraw", [BigInt("1000000000000000000")])
-    })
+    await myOFTA.connect(ownerB).withdraw(BigInt("1000000000000000000"));
 
     const withdrawXTZ = await ethers.provider.getBalance(ownerB.address);
     const withdrawWXTZ = await myOFTA.balanceOf(ownerB.address);
