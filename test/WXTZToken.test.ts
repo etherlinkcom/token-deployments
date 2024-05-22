@@ -127,7 +127,7 @@ describe('WXTZ Test', function () {
     expect(initialWXTZOnB.toString()).to.equal('0');
 
     // deposit some tokens in WXTZ A
-    await myOFTA.deposit({ value: ethers.utils.parseEther("1") });
+    await myOFTA.deposit({ value: amount });
     const afterDepositWXTZOnA = await myOFTA.balanceOf(ownerA.address);
     expect(afterDepositWXTZOnA.toString()).to.equal(amount.toString());
 
@@ -168,16 +168,18 @@ describe('WXTZ Test', function () {
     // Check initial balances
     const initialXTZ = await ethers.provider.getBalance(ownerA.address);
     const initialWXTZ = await myOFTA.balanceOf(ownerA.address);
+    expect(initialWXTZ.toString()).to.equal('0');
 
     // Try to retrieve XTZ without having WXTZ
-    expect(initialWXTZ.toBigInt()).to.equal(0n);
-    await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
+    await expect(myOFTA.withdraw(ethers.utils.parseEther("1"))).to.be.reverted;
+    let afterWithdrawXTZ = await ethers.provider.getBalance(ownerA.address);
+    expect(afterWithdrawXTZ.toString()).to.equal(initialXTZ.toString());
 
     // Test fake deposit before retrying
     myOFTA.deposit({ value: 0 });
-    const withdrawWXTZ = await myOFTA.balanceOf(ownerA.address);
-    expect(withdrawWXTZ.toBigInt()).to.equal(0n);
-    await expect(myOFTA.withdraw("10000000000000000000000")).to.be.reverted;
+    await expect(myOFTA.withdraw(ethers.utils.parseEther("1"))).to.be.reverted;
+    afterWithdrawXTZ = await ethers.provider.getBalance(ownerA.address);
+    expect(afterWithdrawXTZ.toString()).to.equal(initialXTZ.toString());
   });
 
   // Test that the deposit without giving XTZ doesn't give you WXTZ
