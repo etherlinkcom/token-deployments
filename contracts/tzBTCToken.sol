@@ -3,13 +3,12 @@ pragma solidity 0.8.22;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
-import { ERC20Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import { ERC20PermitUpgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol";
 import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import { UUPSUpgradeable } from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 
-contract tzBTCToken is OwnableUpgradeable, ERC20Upgradeable, ERC20PermitUpgradeable, UUPSUpgradeable {
+contract tzBTCToken is OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable {
     string private constant _name = "Tezos Bitcoin";
     string private constant _symbol = "tzBTC";
 
