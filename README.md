@@ -30,10 +30,19 @@ npx hardhat test
 
 ## Deploy
 
-If the contract is an OFT (for now, all tokens are OFTs!), it's best to use the command provided by LayerZero and follow the steps outlined in the terminal:
+### Classic OFTs
+
+If the contract is an OFT, it's best to use the command provided by LayerZero and follow the steps outlined in the terminal:
 
 ```
 npx hardhat lz:deploy
+```
+
+### Custom OApps
+
+If the contract is not a classic OFT, it is recommended to deploy it manually with hardhat-deploy instead like that:
+```
+npx hh deploy --tags <TAG_OF_DEPLOYMENT> --network <DESIRED_NETWORK>
 ```
 
 ## Verify
