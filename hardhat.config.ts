@@ -11,6 +11,7 @@ import '@nomiclabs/hardhat-ethers'
 import '@layerzerolabs/toolbox-hardhat'
 import "@nomicfoundation/hardhat-verify";
 import "@nomicfoundation/hardhat-chai-matchers";
+import "@openzeppelin/hardhat-upgrades";
 import { HardhatUserConfig, HttpNetworkAccountsUserConfig } from 'hardhat/types'
 
 import { EndpointId } from '@layerzerolabs/lz-definitions'
@@ -41,6 +42,15 @@ const config: HardhatUserConfig = {
     compilers: [
       {
         version: '0.8.22',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: '0.8.9',
         settings: {
           optimizer: {
             enabled: true,
@@ -84,11 +94,11 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      etherlink: "YOU_CAN_COPY_ME",
+      etherlinkTestnet: "YOU_CAN_COPY_ME",
     },
     customChains: [
       {
-        network: "etherlink",
+        network: "etherlinkTestnet",
         chainId: 128123,
         urls: {
           apiURL: "https://testnet-explorer.etherlink.com/api",
