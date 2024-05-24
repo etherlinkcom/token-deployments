@@ -39,6 +39,7 @@ const deploy: DeployFunction = async (hre) => {
     endpointV2Deployment.address,
     deployer,
   );
+  await token.deployed();
   const address = await token.address;
 
   console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
