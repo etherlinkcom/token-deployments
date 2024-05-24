@@ -1,7 +1,6 @@
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { expect } from 'chai'
-import { BigNumber, Contract, ContractFactory } from 'ethers'
-import { formatBytes32String } from '../scripts/utils'
+import { Contract, ContractFactory } from 'ethers'
 import { deployments, ethers, upgrades } from 'hardhat'
 import {Options} from '@layerzerolabs/lz-v2-utilities'
 
@@ -16,7 +15,6 @@ describe('tzBTC Test', function () {
   let EndpointV2Mock: ContractFactory
   let ownerToken: SignerWithAddress
   let ownerDummy: SignerWithAddress
-  let ownerAdapter: SignerWithAddress
   let endpointOwner: SignerWithAddress
   let tzBTCToken: Contract
   let tzBTCAdapter: Contract
@@ -185,5 +183,9 @@ describe('tzBTC Test', function () {
 
     expect(await tzBTCDummy.owner()).to.equal(ownerToken.address)
     expect(await tzBTCToken.owner()).to.equal(ownerDummy.address)
+  })
+
+  it("shouldn't be able to burn non-existing tzBTC", async function () {
+    expect(tzBTCToken.burn(ownerToken.address, 10)).to.be.reverted
   })
 })
