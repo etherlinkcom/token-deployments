@@ -37,11 +37,13 @@ const deploy: DeployFunction = async (hre) => {
   // Deploy the ERC20 Upgradable contract tzBTC
   const Token = await hre.ethers.getContractFactory("tzBTCToken");
   const tzBTCToken = await upgrades.deployProxy(Token, [deployer], { initializer: 'initialize', kind: 'uups' });
+  await tzBTCToken.deployed();
   const tzBTCTokenLogic = await upgrades.erc1967.getImplementationAddress(tzBTCToken.address);
 
   // Deploy OFT Adapter
   const Adapter = await hre.ethers.getContractFactory("tzBTCAdapter");
   const adapter = await Adapter.deploy(tzBTCToken.address, endpointV2Deployment.address, deployer);
+  await tzBTCToken.deployed();
 
   console.log(`Deployed contract: ${contractName} proxy, network: ${hre.network.name}, address: ${tzBTCToken.address}`);
   console.log(`Deployed contract: ${contractName} implementation, network: ${hre.network.name}, address: ${tzBTCTokenLogic}`);
