@@ -6,6 +6,14 @@ The token deployments, including addresses, can be found under `deployments/` an
 - `WXTZ`: Wrapped XTZ, exchange XTZ for WXTZ 1:1 on Etherlink. This should be deployed as a [classic OFT](#classic-ofts).
 - `tzBTC`: Wrapped BTC, the contract owner can influence the supply of the token on Etherlink. This should be deployed as a [custom OApp](#custom-oapps).
 
+## Module Guide
+
+- `contracts/`: Solidity smart contracts for tokens
+- `deploy/`: Deployment scripts for the solidity contracts
+- `deployments/`: deployment addresses of contracts per network
+- `scripts/`: Typescript helpers and utilities
+- `test/`: Tests for the contracts
+
 ## Setup
 
 First, you should create and populate a `.env` file to set your environment variables as in `.env.example`. You can set either your wallet private key or mnemonic, for example:
@@ -19,14 +27,6 @@ To install project dependencies, run:
 ```
 npm install
 ```
-
-## Module Guide
-
-- `contracts/`: Solidity smart contracts for tokens
-- `deploy/`: Deployment scripts for the solidity contracts
-- `deployments/`: deployment addresses of contracts per network
-- `scripts/`: Typescript helpers and utilities
-- `test/`: Tests for the contracts
 
 ## Quick Start
 
