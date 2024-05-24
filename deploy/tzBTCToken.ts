@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { upgrades } from 'hardhat'
 import { type DeployFunction } from 'hardhat-deploy/types'
-import { updateDeploymentFile } from '../scripts/utils'
+import { updateDeploymentFile, verifyContract } from '../scripts/utils'
 
 const contractName = 'tzBTCToken'
 
@@ -54,6 +54,10 @@ const deploy: DeployFunction = async (hre) => {
     tzBTCTokenImplem: tzBTCTokenLogic,
     tzBTCAdapter: adapter.address
   });
+
+  await verifyContract(tzBTCToken.address, []);
+  await verifyContract(tzBTCTokenLogic, []);
+  await verifyContract(adapter.address, [tzBTCToken.address, endpointV2Deployment.address, deployer]);
 }
 
 deploy.tags = [contractName]
