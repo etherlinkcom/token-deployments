@@ -20,6 +20,14 @@ To install project dependencies, run:
 npm install
 ```
 
+## Module Guide
+
+- `contracts/`: Solidity smart contracts for tokens
+- `deploy/`: Deployment scripts for the solidity contracts
+- `deployments/`: deployment addresses of contracts per network
+- `scripts/`: Typescript helpers and utilities
+- `test/`: Tests for the contracts
+
 ## Quick Start
 
 To compile and test the contracts run the following:
