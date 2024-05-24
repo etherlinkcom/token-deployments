@@ -3,7 +3,16 @@
 This repo contains token contracts to be deployed on Etherlink Mainnet by the Etherlink team. This project is a hardhat project built on the [template](https://docs.layerzero.network/v2/developers/evm/create-lz-oapp/start) provided by LayerZero.
 
 The token deployments, including addresses, can be found under `deployments/` and are summarized as follows:
-- `WXTZ`: Wrapped XTZ, exchange XTZ for WXTZ 1:1.
+- `WXTZ`: Wrapped XTZ, exchange XTZ for WXTZ 1:1 on Etherlink. This should be deployed as a [classic OFT](#classic-ofts).
+- `tzBTC`: Wrapped BTC, the contract owner can influence the supply of the token on Etherlink. This should be deployed as a [custom OApp](#custom-oapps).
+
+## Module Guide
+
+- `contracts/`: Solidity smart contracts for tokens
+- `deploy/`: Deployment scripts for the solidity contracts
+- `deployments/`: deployment addresses of contracts per network
+- `scripts/`: Typescript helpers and utilities
+- `test/`: Tests for the contracts
 
 ## Setup
 
@@ -30,10 +39,19 @@ npx hardhat test
 
 ## Deploy
 
-If the contract is an OFT (for now, all tokens are OFTs!), it's best to use the command provided by LayerZero and follow the steps outlined in the terminal:
+### Classic OFTs
+
+If the contract is an OFT, it's best to use the command provided by LayerZero and follow the steps outlined in the terminal:
 
 ```
 npx hardhat lz:deploy
+```
+
+### Custom OApps
+
+If the contract is not a classic OFT, it is recommended to deploy it manually with hardhat-deploy instead as follows:
+```
+npx hardhat deploy --tags <TAG_OF_DEPLOYMENT> --network <DESIRED_NETWORK>
 ```
 
 ## Verify

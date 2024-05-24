@@ -1,8 +1,9 @@
 import assert from 'assert'
+import { upgrades } from 'hardhat'
 import { type DeployFunction } from 'hardhat-deploy/types'
 import { updateDeploymentFile } from '../scripts/utils'
 
-const contractName = 'WXTZToken'
+const contractName = 'tzBTCToken'
 
 const deploy: DeployFunction = async (hre) => {
   const { getNamedAccounts, ethers, deployments } = hre
@@ -33,19 +34,25 @@ const deploy: DeployFunction = async (hre) => {
   // }
   const endpointV2Deployment = await hre.deployments.get('EndpointV2')
 
-  const Token = await hre.ethers.getContractFactory("WXTZToken")
-  const signer = await ethers.getSigner(deployer)
-  const token = await Token.connect(signer).deploy(
-    endpointV2Deployment.address,
-    deployer,
-  );
-  await token.deployed();
-  const address = await token.address;
+  // Deploy the ERC20 Upgradable contract tzBTC
+  const Token = await hre.ethers.getContractFactory("tzBTCToken");
+  const tzBTCToken = await upgrades.deployProxy(Token, [deployer], { initializer: 'initialize', kind: 'uups' });
+  await tzBTCToken.deployed();
+  const tzBTCTokenLogic = await upgrades.erc1967.getImplementationAddress(tzBTCToken.address);
 
-  console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
+  // Deploy OFT Adapter
+  const Adapter = await hre.ethers.getContractFactory("tzBTCAdapter");
+  const adapter = await Adapter.deploy(tzBTCToken.address, endpointV2Deployment.address, deployer);
+  await tzBTCToken.deployed();
+
+  console.log(`Deployed contract: ${contractName} proxy, network: ${hre.network.name}, address: ${tzBTCToken.address}`);
+  console.log(`Deployed contract: ${contractName} implementation, network: ${hre.network.name}, address: ${tzBTCTokenLogic}`);
+  console.log(`Deployed contract: ${contractName} adapter, network: ${hre.network.name}, address: ${adapter.address}`);
 
   updateDeploymentFile(hre.network.name, {
-    WXTZToken: address,
+    tzBTCTokenProxy: tzBTCToken.address,
+    tzBTCTokenImplem: tzBTCTokenLogic,
+    tzBTCAdapter: adapter.address
   });
 }
 
