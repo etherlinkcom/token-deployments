@@ -1,7 +1,6 @@
 import assert from 'assert'
-import { writeFileSync } from 'fs'
-
 import { type DeployFunction } from 'hardhat-deploy/types'
+import { updateDeploymentFile } from '../scripts/utils'
 
 const contractName = 'WXTZToken'
 
@@ -44,16 +43,9 @@ const deploy: DeployFunction = async (hre) => {
 
   console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
 
-  writeFileSync(
-    `./deployments/${hre.network.name}.json`,
-    JSON.stringify(
-      {
-        WXTZToken: address,
-      },
-      null,
-      2
-    )
-  );
+  updateDeploymentFile(hre.network.name, {
+    WXTZToken: address,
+  });
 }
 
 deploy.tags = [contractName]

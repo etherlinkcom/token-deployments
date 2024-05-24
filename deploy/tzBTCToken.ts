@@ -1,8 +1,7 @@
 import assert from 'assert'
-import { writeFileSync } from 'fs'
 import { upgrades } from 'hardhat'
-
 import { type DeployFunction } from 'hardhat-deploy/types'
+import { updateDeploymentFile } from '../scripts/utils'
 
 const contractName = 'tzBTCToken'
 
@@ -48,18 +47,11 @@ const deploy: DeployFunction = async (hre) => {
   console.log(`Deployed contract: ${contractName} implementation, network: ${hre.network.name}, address: ${tzBTCTokenLogic}`);
   console.log(`Deployed contract: ${contractName} adapter, network: ${hre.network.name}, address: ${adapter.address}`);
 
-  writeFileSync(
-    `./deployments/${hre.network.name}.json`,
-    JSON.stringify(
-      {
-        tzBTCTokenProxy: tzBTCToken.address,
-        tzBTCTokenImplem: tzBTCTokenLogic,
-        tzBTCAdapter: adapter.address
-      },
-      null,
-      2
-    )
-  );
+  updateDeploymentFile(hre.network.name, {
+    tzBTCTokenProxy: tzBTCToken.address,
+    tzBTCTokenImplem: tzBTCTokenLogic,
+    tzBTCAdapter: adapter.address
+  });
 }
 
 deploy.tags = [contractName]
