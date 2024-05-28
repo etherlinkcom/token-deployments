@@ -22,7 +22,7 @@ contract WXTZToken is ERC20Permit, OFT {
     /**
      * @dev This modifier can be applied to methods that should only be callable on Etherlink testnet or mainnet.
      */
-    modifier onlyEtherlink {
+    modifier onlyEtherlink() {
         require(block.chainid == 128123 || block.chainid == 42793);
         _;
     }
@@ -66,5 +66,25 @@ contract WXTZToken is ERC20Permit, OFT {
         (bool sent, ) = payable(msg.sender).call{ value: wad }("");
         require(sent, "Failed to send Ether");
         emit Withdrawal(msg.sender, wad);
+    }
+
+    /**
+     * @dev Override the _credit method to add protection in case the multisignature owner of the Oapp gets hacked,
+     * and people can use the setPeer method to setPeer a malicious OFT on another chain.
+     * Only the bridged OFTs are at risk.
+     * @param _to The address to credit the tokens to.
+     * @param _amountLD The amount of tokens to credit in local decimals.
+     * @dev _srcEid The source chain ID.
+     * @return amountReceivedLD The amount of tokens ACTUALLY received in local decimals.
+     */
+    function _credit(
+        address _to,
+        uint256 _amountLD,
+        uint32 /*_srcEid*/
+    ) internal override returns (uint256 amountReceivedLD) {
+        if (block.chainid == 128123 || block.chainid == 42793) {
+            require(_amountLD + totalSupply() <= address(this).balance);
+        }
+        return super._credit(_to, _amountLD, 0);
     }
 }
