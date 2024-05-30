@@ -86,6 +86,12 @@ const config: HardhatUserConfig = {
       chainId: 128123,
       accounts,
     },
+    bscTestnet: {
+      eid: EndpointId.BSC_V2_TESTNET,
+      url: process.env.BSC_TESTNET_URL || "https://bsc-testnet.publicnode.com",
+      chainId: 97,
+      accounts,
+    },
   },
   namedAccounts: {
     deployer: {
@@ -95,6 +101,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       etherlinkTestnet: "YOU_CAN_COPY_ME",
+      bscTestnet: process.env.BSCSCAN_API_KEY || "",
     },
     customChains: [
       {

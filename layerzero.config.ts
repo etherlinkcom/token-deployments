@@ -12,6 +12,11 @@ const sepoliaContract: OmniPointHardhat = {
   contractName: 'WXTZToken',
 }
 
+const bscTestnetContract: OmniPointHardhat = {
+  eid: EndpointId.BSC_V2_TESTNET,
+  contractName: 'WXTZToken',
+}
+
 const config: OAppOmniGraphHardhat = {
   contracts: [
     {
@@ -19,6 +24,9 @@ const config: OAppOmniGraphHardhat = {
     },
     {
       contract: sepoliaContract,
+    },
+    {
+      contract: bscTestnetContract,
     },
   ],
   connections: [
@@ -28,6 +36,14 @@ const config: OAppOmniGraphHardhat = {
     },
     {
       from: sepoliaContract,
+      to: etherlinkTestnetContract,
+    },
+    {
+      from: etherlinkTestnetContract,
+      to: bscTestnetContract,
+    },
+    {
+      from: bscTestnetContract,
       to: etherlinkTestnetContract,
     },
   ],
