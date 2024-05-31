@@ -79,7 +79,7 @@ targetNetworkName=<target-network> npx hardhat run --network <actual-network> sc
 
 Then, you can try to send a token from the actual chain to the targeted chain:
 ```
-targetNetworkName=<target-network> npx hardhat run --network etherlinkTestnet scripts/sendToken.ts
+targetNetworkName=<target-network> npx hardhat run --network <actual-chain> scripts/sendToken.ts
 ```
 
 **Important: if you don't have any WXTZ on the actual chain, you won't be able to send it. If you use etherlink testnet as actual network the test will automatically mint you one. This mint is only doable on etherlink testnet.**
