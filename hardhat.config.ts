@@ -102,6 +102,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       etherlinkTestnet: "YOU_CAN_COPY_ME",
       bscTestnet: process.env.BSCSCAN_API_KEY || "",
+      sepolia: process.env.ETHERSCAN_API_KEY || ""
     },
     customChains: [
       {
