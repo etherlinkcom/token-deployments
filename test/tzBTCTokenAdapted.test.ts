@@ -27,7 +27,7 @@ describe('tzBTC Test', function () {
     // Contract factory for our tested contract
     //
     // We are using a derived contract that exposes a mint() function for testing purposes
-    tzBTCTokenFactory = await ethers.getContractFactory('tzBTCToken')
+    tzBTCTokenFactory = await ethers.getContractFactory('tzBTCTokenAdapted')
     tzBTCAdapterFactory = await ethers.getContractFactory('tzBTCAdapter')
     tzBTCDummyFactory = await ethers.getContractFactory('tzBTCDummy')
 
