@@ -66,7 +66,7 @@ contract WXTZToken is ERC20Permit, OFT {
      * @param wad The amount of WXTZ to exchange for XTZ
      */
     function withdraw(uint wad) public onlyEtherlink {
-        require(balanceOf(msg.sender) >= wad);
+        require(balanceOf(msg.sender) >= wad, "There is not enough XTZ in the contract to fulfil the withdraw requested.");
         _burn(msg.sender, wad);
         (bool sent, ) = payable(msg.sender).call{ value: wad }("");
         require(sent, "Failed to send Ether");
