@@ -25,7 +25,7 @@ contract WXTZToken is ERC20Permit, OFT {
      * @dev This modifier can be applied to methods that should only be callable on Etherlink testnet or mainnet.
      */
     modifier onlyEtherlink() {
-        require(block.chainid == etherlinkChainId);
+        require(block.chainid == etherlinkChainId, "You can only call this method on Etherlink.");
         _;
     }
 
@@ -66,7 +66,7 @@ contract WXTZToken is ERC20Permit, OFT {
      * @param wad The amount of WXTZ to exchange for XTZ
      */
     function withdraw(uint wad) public onlyEtherlink {
-        require(balanceOf(msg.sender) >= wad);
+        require(balanceOf(msg.sender) >= wad, "There is not enough XTZ in the contract to fulfil the withdraw requested.");
         _burn(msg.sender, wad);
         (bool sent, ) = payable(msg.sender).call{ value: wad }("");
         require(sent, "Failed to send Ether");
@@ -88,7 +88,7 @@ contract WXTZToken is ERC20Permit, OFT {
         uint32 _srcEid
     ) internal override returns (uint256 amountReceivedLD) {
         if (block.chainid == etherlinkChainId) {
-            require(_amountLD + totalSupply() <= address(this).balance);
+            require(_amountLD + totalSupply() <= address(this).balance, "The amount of WXTZ on Etherlink should not exceed the amount of XTZ locked in the Etherlink contract.");
         }
         return super._credit(_to, _amountLD, _srcEid);
     }
