@@ -80,11 +80,11 @@ contract WXTZToken is ERC20Permit, OFT {
     function _credit(
         address _to,
         uint256 _amountLD,
-        uint32 /*_srcEid*/
+        uint32 _srcEid
     ) internal override returns (uint256 amountReceivedLD) {
         if (block.chainid == 128123 || block.chainid == 42793) {
             require(_amountLD + totalSupply() <= address(this).balance);
         }
-        return super._credit(_to, _amountLD, 0);
+        return super._credit(_to, _amountLD, _srcEid);
     }
 }
