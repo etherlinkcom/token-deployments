@@ -1,6 +1,9 @@
 import assert from 'assert'
 import { type DeployFunction } from 'hardhat-deploy/types'
 import { updateDeploymentFile } from '../scripts/utils'
+import { testnetChains, mainnetChains } from '../chain-config';
+import { network } from 'hardhat';
+import { error } from 'console';
 
 const contractName = 'WXTZToken'
 
@@ -35,7 +38,18 @@ const deploy: DeployFunction = async (hre) => {
 
   const Token = await hre.ethers.getContractFactory("WXTZToken")
   const signer = await ethers.getSigner(deployer)
+  // use the chain-config file to set either the etherlink testnet id or the mainnet id
+  const currentNetwork = network.config.chainId || 0;
+  let etherlinkChainId;
+  if (testnetChains.includes(currentNetwork)) {
+    etherlinkChainId = 128123;
+  } else if (mainnetChains.includes(currentNetwork)) {
+    etherlinkChainId = 42793;
+  } else {
+    throw error(`The chain id used (${currentNetwork}) to deploy is not recognized, add it in the chain-config.ts file.`);
+  }
   const token = await Token.connect(signer).deploy(
+    etherlinkChainId,
     endpointV2Deployment.address,
     deployer,
   );

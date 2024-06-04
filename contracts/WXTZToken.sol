@@ -16,6 +16,8 @@ contract WXTZToken is ERC20Permit, OFT {
     string private constant _name = "Wrapped XTZ";
     string private constant _symbol = "WXTZ";
 
+    uint256 public immutable etherlinkChainId;
+
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
 
@@ -23,19 +25,22 @@ contract WXTZToken is ERC20Permit, OFT {
      * @dev This modifier can be applied to methods that should only be callable on Etherlink testnet or mainnet.
      */
     modifier onlyEtherlink() {
-        require(block.chainid == 128123 || block.chainid == 42793);
+        require(block.chainid == etherlinkChainId);
         _;
     }
 
     /**
      * @dev The contract constructor
+     * @param _etherlinkChainId The chain ID of Etherlink mainnet or testnet.
      * @param _lzEndpoint The LayerZero endpoint address
      * @param _delegate The delegate capable of making OApp configurations inside of the LayerZero endpoint.
      */
     constructor(
+        uint256 _etherlinkChainId,
         address _lzEndpoint,
         address _delegate
     ) OFT(_name, _symbol, _lzEndpoint, _delegate) ERC20Permit(_name) Ownable(msg.sender) {
+        etherlinkChainId = _etherlinkChainId;
         _transferOwnership(_delegate);
     }
 
@@ -82,7 +87,7 @@ contract WXTZToken is ERC20Permit, OFT {
         uint256 _amountLD,
         uint32 _srcEid
     ) internal override returns (uint256 amountReceivedLD) {
-        if (block.chainid == 128123 || block.chainid == 42793) {
+        if (block.chainid == etherlinkChainId) {
             require(_amountLD + totalSupply() <= address(this).balance);
         }
         return super._credit(_to, _amountLD, _srcEid);
