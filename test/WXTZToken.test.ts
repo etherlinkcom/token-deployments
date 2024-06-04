@@ -51,8 +51,8 @@ describe('WXTZ Test', function () {
     mockEndpointV2B = await EndpointV2Mock.deploy(eidB)
 
     // Deploying two instances of MyOFT contract with different identifiers and linking them to the mock LZEndpoint
-    myOFTA = await MyOFT.connect(ownerA).deploy(mockEndpointV2A.address, ownerA.address)
-    myOFTB = await MyOFT.connect(ownerB).deploy(mockEndpointV2B.address, ownerB.address)
+    myOFTA = await MyOFT.connect(ownerA).deploy(128123, mockEndpointV2A.address, ownerA.address)
+    myOFTB = await MyOFT.connect(ownerB).deploy(128123, mockEndpointV2B.address, ownerB.address)
 
     // Setting destination endpoints in the LZEndpoint mock for each MyOFT instance
     await mockEndpointV2A.setDestLzEndpoint(myOFTB.address, mockEndpointV2B.address)
@@ -73,7 +73,7 @@ describe('WXTZ Test', function () {
 
     // Test deployed by user A but owner should be new user
     const newUser = ethers.Wallet.createRandom();
-    let newOFT = await MyOFT.connect(ownerA).deploy(mockEndpointV2A.address, newUser.address);
+    let newOFT = await MyOFT.connect(ownerA).deploy(128123, mockEndpointV2A.address, newUser.address);
     const OFTOwner = await newOFT.owner();
     expect(OFTOwner).to.equal(newUser.address);
   });
