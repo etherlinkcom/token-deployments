@@ -5,7 +5,7 @@ import { testnetChains, mainnetChains } from '../chain-config';
 import { network } from 'hardhat';
 import { error } from 'console';
 
-const contractName = 'WXTZToken'
+const contractName = 'WXTZ'
 
 const deploy: DeployFunction = async (hre) => {
   const { getNamedAccounts, ethers, deployments } = hre
@@ -36,7 +36,7 @@ const deploy: DeployFunction = async (hre) => {
   // }
   const endpointV2Deployment = await hre.deployments.get('EndpointV2')
 
-  const Token = await hre.ethers.getContractFactory("WXTZToken")
+  const Token = await hre.ethers.getContractFactory("WXTZ")
   const signer = await ethers.getSigner(deployer)
   // use the chain-config file to set either the etherlink testnet id or the mainnet id
   const currentNetwork = network.config.chainId || 0;
@@ -59,7 +59,7 @@ const deploy: DeployFunction = async (hre) => {
   console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
 
   updateDeploymentFile(hre.network.name, {
-    WXTZToken: address,
+    WXTZ: address,
   });
 }
 

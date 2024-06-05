@@ -28,18 +28,18 @@ async function main() {
   const networkName = network.name;
   // targeted network
   const targetNetworkName = process.env.targetNetworkName || "";
-  const WXTZTokenDeployed: { [key: string]: string } = {
-    etherlinkTestnet: etherlinkTestnetTokens.WXTZToken,
-    sepolia: sepoliaTokens.WXTZToken,
-    bscTestnet: bscTestnetTokens.WXTZToken
+  const WXTZDeployed: { [key: string]: string } = {
+    etherlinkTestnet: etherlinkTestnetTokens.WXTZ,
+    sepolia: sepoliaTokens.WXTZ,
+    bscTestnet: bscTestnetTokens.WXTZ
   };
-  const WXTZTokenFactory = await ethers.getContractFactory('WXTZToken');
-  const WXTZToken = WXTZTokenFactory.attach(WXTZTokenDeployed[networkName]);
+  const WXTZFactory = await ethers.getContractFactory('WXTZ');
+  const WXTZ = WXTZFactory.attach(WXTZDeployed[networkName]);
 
   // If this is Etherlink deposit token
   if (networkName == 'etherlinkTestnet') {
     console.log('Deposit 1 XTZ in the WXTZ...');
-    await WXTZToken.deposit({ value: ethers.utils.parseEther('1') });
+    await WXTZ.deposit({ value: ethers.utils.parseEther('1') });
     console.log('WXTZ received.');
   }
 
@@ -64,7 +64,7 @@ async function main() {
     composeMsg: "0x", // The composed message for the send() operation.
     oftCmd: "0x", // The OFT command to be executed, unused in default OFT implementations.
   };
-  const estimatedGas = await WXTZToken.quoteSend(
+  const estimatedGas = await WXTZ.quoteSend(
     sendParam,
     false // do we want to pay in lz token
   );
@@ -74,7 +74,7 @@ async function main() {
   console.log(`Sending the tokens from ${networkName} to ${targetNetworkName}...`);
 
   // Send tokens
-  const tx = await WXTZToken.send(
+  const tx = await WXTZ.send(
     sendParam,
     estimatedGas, // messaging fee
     owner.address, // refund address

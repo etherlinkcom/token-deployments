@@ -27,25 +27,25 @@ async function main() {
   const networkName = network.name;
   // targeted network
   const targetNetworkName = process.env.targetNetworkName || "";
-  const WXTZTokenDeployed: { [key: string]: string } = {
-    etherlinkTestnet: etherlinkTestnetTokens.WXTZToken,
-    sepolia: sepoliaTokens.WXTZToken,
-    bscTestnet: bscTestnetTokens.WXTZToken
+  const WXTZDeployed: { [key: string]: string } = {
+    etherlinkTestnet: etherlinkTestnetTokens.WXTZ,
+    sepolia: sepoliaTokens.WXTZ,
+    bscTestnet: bscTestnetTokens.WXTZ
   };
-  const WXTZTokenFactory = await ethers.getContractFactory('WXTZToken');
-  const WXTZToken = WXTZTokenFactory.attach(WXTZTokenDeployed[networkName]);
+  const WXTZFactory = await ethers.getContractFactory('WXTZ');
+  const WXTZ = WXTZFactory.attach(WXTZDeployed[networkName]);
 
   // set peer
   console.log(
     `Calling setPeer on your ${networkName} OFT for ${targetNetworkName} network.`
   );
 
-  await WXTZToken.setPeer(
+  await WXTZ.setPeer(
     endpointIds[targetNetworkName],
-    customFormatBytes32String(WXTZTokenDeployed[targetNetworkName])
+    customFormatBytes32String(WXTZDeployed[targetNetworkName])
   );
 
-  if (WXTZToken.isPeer(endpointIds[targetNetworkName], customFormatBytes32String(WXTZTokenDeployed[targetNetworkName]))) {
+  if (WXTZ.isPeer(endpointIds[targetNetworkName], customFormatBytes32String(WXTZDeployed[targetNetworkName]))) {
     console.log(
       `Your OFT on ${targetNetworkName} has been set as a peer on the ${networkName} OFT.`
     );

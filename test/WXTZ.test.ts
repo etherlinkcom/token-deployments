@@ -24,7 +24,7 @@ describe('WXTZ Test', function () {
     // Contract factory for our tested contract
     //
     // We are using a derived contract that exposes a mint() function for testing purposes
-    MyOFT = await ethers.getContractFactory('WXTZToken')
+    MyOFT = await ethers.getContractFactory('WXTZ')
 
     // Fetching the first three signers (accounts) from Hardhat's local Ethereum network
     const signers = await ethers.getSigners()

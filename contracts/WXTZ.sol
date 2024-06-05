@@ -6,13 +6,13 @@ import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 import { ERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 /**
- * @title WXTZ Token
+ * @title WXTZ
  * @dev This token contract aims to emulate the WETH9 contract on Ethereum mainnet.
  * Tokens can be bridged across EVM chains via LayerZero because of the OFT standard.
  * Separately calling `approve` when having a contract transfer funds is no longer necessary because of the ERC20Permit standard.
  * The contract ownership can be transferred because of the Ownable standard.
  */
-contract WXTZToken is ERC20Permit, OFT {
+contract WXTZ is ERC20Permit, OFT {
     string private constant _name = "Wrapped XTZ";
     string private constant _symbol = "WXTZ";
 

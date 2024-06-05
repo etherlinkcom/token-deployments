@@ -4,17 +4,17 @@ import type { OAppOmniGraphHardhat, OmniPointHardhat } from '@layerzerolabs/tool
 
 const etherlinkTestnetContract: OmniPointHardhat = {
   eid: EndpointId.ETHERLINK_V2_TESTNET,
-  contractName: "WXTZToken"
+  contractName: "WXTZ"
 }
 
 const sepoliaContract: OmniPointHardhat = {
   eid: EndpointId.SEPOLIA_V2_TESTNET,
-  contractName: 'WXTZToken',
+  contractName: 'WXTZ',
 }
 
 const bscTestnetContract: OmniPointHardhat = {
   eid: EndpointId.BSC_V2_TESTNET,
-  contractName: 'WXTZToken',
+  contractName: 'WXTZ',
 }
 
 const config: OAppOmniGraphHardhat = {
