@@ -39,9 +39,8 @@ contract WXTZ is ERC20Permit, OFT {
         uint256 _etherlinkChainId,
         address _lzEndpoint,
         address _delegate
-    ) OFT(_name, _symbol, _lzEndpoint, _delegate) ERC20Permit(_name) Ownable(msg.sender) {
+    ) OFT(_name, _symbol, _lzEndpoint, _delegate) ERC20Permit(_name) Ownable(_delegate) {
         etherlinkChainId = _etherlinkChainId;
-        _transferOwnership(_delegate);
     }
 
     /**
