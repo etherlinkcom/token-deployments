@@ -59,7 +59,7 @@ npx hardhat deploy --tags <TAG_OF_DEPLOYMENT> --network <DESIRED_NETWORK>
 To verify your contract, run the following command:
 
 ```
-npx hardhat verify <YOUR_CONTRACT_ADDRESS> <YOUR_CONTRACT_CONSTRUCTOR_ARGS> --network <DESIRED_NETWORK>
+npx hardhat verify <YOUR_CONTRACT_ADDRESS> --network <DESIRED_NETWORK> <YOUR_CONTRACT_CONSTRUCTOR_ARGS>
 ```
 
 For now, only testnet is supported, so you should use `--network etherlinkTestnet` or any other testnet defined in the `hardhat.config.ts`.

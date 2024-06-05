@@ -56,7 +56,8 @@ const deploy: DeployFunction = async (hre) => {
   await token.deployed();
   const address = await token.address;
 
-  console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
+  console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`);
+  console.log(`If you want to verify the contract, here is the command:\n\n        npx hardhat verify ${address} --network ${hre.network.name} ${etherlinkChainId} ${endpointV2Deployment.address} ${deployer}\n`); 
 
   updateDeploymentFile(hre.network.name, {
     WXTZ: address,
