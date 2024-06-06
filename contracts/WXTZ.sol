@@ -19,7 +19,7 @@ contract WXTZ is ERC20Permit, OFT {
     uint256 public immutable etherlinkChainId;
     uint256 public constant TIMELOCK = 2 days;
 
-    mapping (uint32 => uint256) _proposalTimestamps;
+   mapping(uint32 => mapping(bytes32 => uint256)) private _proposalTimestamps;
 
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
@@ -89,16 +89,15 @@ contract WXTZ is ERC20Permit, OFT {
      * @param _peer The address of the peer to be associated with the corresponding endpoint.
      */
     function setPeer(uint32 _eid, bytes32 _peer) public virtual onlyOwner override {
-        if (_proposalTimestamps[_eid] == 0 || block.timestamp > _proposalTimestamps[_eid] + TIMELOCK) {
-            _proposalTimestamps[_eid] = block.timestamp;
+        if (_proposalTimestamps[_eid][_peer] == 0) {
+            _proposalTimestamps[_eid][_peer] = block.timestamp;
         }
-        else {
-            _executeSetPeer(_eid, _peer);
-        }
+        require(block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK, "The timelock defined by `TIMELOCK` hasn't expired yet.");
+        _executeSetPeer(_eid, _peer);
     }
 
     function _executeSetPeer(uint32 _eid, bytes32 _peer) internal onlyOwner {
-        super.setPeer(_eid, _peer);
+        super._setPeer(_eid, _peer);
     }
 
     /**
