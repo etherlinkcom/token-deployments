@@ -15,10 +15,11 @@ import { ERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/ERC2
 contract WXTZ is ERC20Permit, OFT {
     string private constant _name = "Wrapped XTZ";
     string private constant _symbol = "WXTZ";
-    uint256 private _proposedBlock;
 
     uint256 public immutable etherlinkChainId;
-    uint256 public constant TIMELOCK_BLOCKS = 100;
+    uint256 public constant TIMELOCK = 2 days;
+
+    mapping (uint32 => uint256) _proposalTimestamps;
 
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
@@ -81,16 +82,15 @@ contract WXTZ is ERC20Permit, OFT {
      * Indicates that the peer is trusted to send LayerZero messages to this OApp.
      * Set this to bytes32(0) to remove the peer address.
      * Peer is a bytes32 to accommodate non-evm chains.
-     * A timelock is implemented such that the peer can only set after TIMELOCK_BLOCKS blocks
+     * A timelock is implemented such that the peer can only set after TIMELOCK blocks
      * have passed from the first call.
      * 
      * @param _eid The endpoint ID.
      * @param _peer The address of the peer to be associated with the corresponding endpoint.
      */
     function setPeer(uint32 _eid, bytes32 _peer) public virtual onlyOwner override {
-        if (block.number < _proposedBlock + TIMELOCK_BLOCKS) {
-            _proposedBlock = block.number;
-            emit ProposePeer(_eid, _peer);
+        if (_proposalTimestamps[_eid] == 0 || block.timestamp > _proposalTimestamps[_eid] + TIMELOCK) {
+            _proposalTimestamps[_eid] = block.timestamp;
         }
         else {
             _executeSetPeer(_eid, _peer);
