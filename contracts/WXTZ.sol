@@ -93,8 +93,9 @@ contract WXTZ is ERC20Permit, OFT {
         if (_proposalTimestamps[_eid][_peer] == 0) {
             _proposalTimestamps[_eid][_peer] = block.timestamp;
         }
-        require(block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK, "The `setPeer()` timelock hasn't expired yet.");
-        super._setPeer(_eid, _peer);
+        if (block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK) {
+            super._setPeer(_eid, _peer);
+        }
     }
 
     /**
