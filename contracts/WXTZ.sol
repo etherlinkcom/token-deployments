@@ -82,21 +82,18 @@ contract WXTZ is ERC20Permit, OFT {
      * Indicates that the peer is trusted to send LayerZero messages to this OApp.
      * Set this to bytes32(0) to remove the peer address.
      * Peer is a bytes32 to accommodate non-evm chains.
-     * A timelock is implemented such that the peer can only set after TIMELOCK blocks
-     * have passed from the first call.
+     * A timelock is implemented such that the peer can only set after TIMELOCK time
+     * has passed from the first call.
      * 
      * @param _eid The endpoint ID.
      * @param _peer The address of the peer to be associated with the corresponding endpoint.
      */
     function setPeer(uint32 _eid, bytes32 _peer) public virtual onlyOwner override {
+        emit ProposePeer(_eid, _peer);
         if (_proposalTimestamps[_eid][_peer] == 0) {
             _proposalTimestamps[_eid][_peer] = block.timestamp;
         }
-        require(block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK, "The timelock defined by `TIMELOCK` hasn't expired yet.");
-        _executeSetPeer(_eid, _peer);
-    }
-
-    function _executeSetPeer(uint32 _eid, bytes32 _peer) internal onlyOwner {
+        require(block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK, "The `setPeer()` timelock hasn't expired yet.");
         super._setPeer(_eid, _peer);
     }
 
