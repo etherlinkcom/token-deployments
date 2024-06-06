@@ -62,24 +62,22 @@ To verify your contract, run the following command:
 npx hardhat verify <YOUR_CONTRACT_ADDRESS> --network <DESIRED_NETWORK> <YOUR_CONTRACT_CONSTRUCTOR_ARGS>
 ```
 
-For now, only testnet is supported, so you should use `--network etherlinkTestnet` or any other testnet defined in the `hardhat.config.ts`.
-
-## Test of WXTZ
+## WXTZ Test
 
 ### Set peer
 
-First, you need to set peer on each OFT you deployed. To do so, run:
+First, you need to `setPeer()` on each OFT you deployed. To do so, run:
 ```
-targetNetworkName=<target-network> npx hardhat run --network <actual-network> scripts/setPeer.ts
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
 ```
 
-**Remember to do it at least twice (and change the target-network by the actual-network and vice-versa) because you have to set peer on each chain to create the link between them.**
+**NB:** You need to run this twice per connection, because each contract on both sides of the connection need to call `setPeer()`. Simply swap the source and target networks to create a link.
 
 ### Send token
 
-Then, you can try to send a token from the actual chain to the targeted chain:
+Then, you can try to send a token from the source network to the target network:
 ```
-targetNetworkName=<target-network> npx hardhat run --network <actual-chain> scripts/sendToken.ts
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/sendToken.ts
 ```
 
-**Important: if you don't have any WXTZ on the actual chain, you won't be able to send it. If you use etherlink testnet as actual network the test will automatically mint you one. This mint is only doable on etherlink testnet.**
+**NB:** if you don't have any WXTZ on the source chain, you won't be able to send any. If you use Etherlink Testnet as the source network, the test will automatically mint you 1 WXTZ. This mint is only doable on Etherlink Testnet.

@@ -17,9 +17,13 @@ contract WXTZ is ERC20Permit, OFT {
     string private constant _symbol = "WXTZ";
 
     uint256 public immutable etherlinkChainId;
+    uint256 public constant TIMELOCK = 2 days;
+
+   mapping(uint32 => mapping(bytes32 => uint256)) private _proposalTimestamps;
 
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
+    event ProposePeer(uint32 endpointID, bytes32 peer);
 
     /**
      * @dev This modifier can be applied to methods that should only be callable on Etherlink testnet or mainnet.
@@ -70,6 +74,28 @@ contract WXTZ is ERC20Permit, OFT {
         (bool sent, ) = payable(msg.sender).call{ value: wad }("");
         require(sent, "Failed to send Ether");
         emit Withdrawal(msg.sender, wad);
+    }
+
+    /**
+     * @dev Sets the peer address (OApp instance) for a corresponding endpoint.
+     * Only the owner/admin of the OApp can call this function.
+     * Indicates that the peer is trusted to send LayerZero messages to this OApp.
+     * Set this to bytes32(0) to remove the peer address.
+     * Peer is a bytes32 to accommodate non-evm chains.
+     * A timelock is implemented such that the peer can only set after TIMELOCK time
+     * has passed from the first call.
+     * 
+     * @param _eid The endpoint ID.
+     * @param _peer The address of the peer to be associated with the corresponding endpoint.
+     */
+    function setPeer(uint32 _eid, bytes32 _peer) public virtual onlyOwner override {
+        emit ProposePeer(_eid, _peer);
+        if (_proposalTimestamps[_eid][_peer] == 0) {
+            _proposalTimestamps[_eid][_peer] = block.timestamp;
+        }
+        if (block.timestamp > _proposalTimestamps[_eid][_peer] + TIMELOCK) {
+            super._setPeer(_eid, _peer);
+        }
     }
 
     /**
