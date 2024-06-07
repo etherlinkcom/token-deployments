@@ -10,9 +10,10 @@ The token deployments, including addresses, can be found under `deployments/` an
 
 - `contracts/`: Solidity smart contracts for tokens
 - `deploy/`: Deployment scripts for the solidity contracts
-- `deployments/`: deployment addresses of contracts per network
+- `deployments/`: Deployment addresses of contracts per network
 - `scripts/`: Typescript helpers and utilities
 - `test/`: Tests for the contracts
+- `documentation/`: Documentation of the contracts
 
 ## Setup
 
@@ -71,7 +72,9 @@ First, you need to `setPeer()` on each OFT you deployed. To do so, run:
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
 ```
 
-**NB:** You need to run this twice per connection, because each contract on both sides of the connection need to call `setPeer()`. Simply swap the source and target networks to create a link.
+**NB:** 
+1. You need to run this twice per connection, because each contract on both sides of the connection need to call `setPeer()`. Simply swap the source and target networks to create a link.
+2. You will also have to run twice each `setPeer()` and wait for 2 days before running the second call. This is a security measure added to the token in case one of the contracts get compromised, the users will have time to bridge back their tokens before the funds get drained.
 
 ### Send token
 
