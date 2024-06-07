@@ -1,75 +1,62 @@
-# WXTZ Token
+# WXTZ
 
-## Introduction
+WXTZ is the token created to replicate the functionality of Wrapped Ether (WETH), but specifically for the Tez (XTZ) native token on Etherlink. The goal of WXTZ is to facilitate the use of XTZ in various decentralized applications (dApps) and protocols that require ERC-20-like tokens.
 
-### What is WXTZ?
+### Wrapping & Unwrapping
 
-WXTZ is the token created to replicate the functionality of Wrapped Ether (WETH) but specifically for the Tez (XTZ) native token on Etherlink. The goal of WXTZ is to facilitate the use of XTZ in various decentralized applications (dApps) and protocols that require ERC-20-like tokens.
+The token follows the `WETH9` interface for compatibility:
 
-### Cross-Chain Compatibility with LayerZero
+- **Wrapping XTZ**: The `deposit()` method can be called with XTZ attached to the message to wrap XTZ for WXTZ
+- **Unwrapping XTZ**: The `withdraw(wad)` method can be called unwrap `wad` WXTZ for XTZ
 
-To enhance the utility and reach of WXTZ, the token also implements the Omnichain Fungible Token (OFT) standard from LayerZero. This enables WXTZ to be seamlessly transferred and utilized across different blockchain networks, making it a versatile asset in the multi-chain DeFi ecosystem.
+### Bridging with LayerZero OFT
 
-## Technical details
+WXTZ implements the [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero. This allows WXTZ to be bridged in a secure and capital efficient way across different chains through direct minting and burning of the supply.
 
-### Wrapping & Unwrapping Mechanisms
+### Gasless Approval with ERC20Permit
 
-The token follow the `WETH9` interface for compatibility purpose for the wrapping and unwrapping mechanisms:
+The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin. This allows users to approve token transfers via gasless signatures instead of on-chain transactions. 
 
-**FUNCTIONS**
->receive()
->fallback()
->deposit()
->withdraw(wad)
->totalSupply()
->approve(guy, wad)
->transfer(dst, wad)
->transferFrom(src, dst, wad)
+This feature leverages the [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) standard to facilitate off-chain authorization for token transfers.
 
-**EVENTS**
->Approval(src, guy, wad)
->Transfer(src, dst, wad)
->Deposit(dst, wad)
->Withdrawal(src, wad)
-
-### ERC20Permit
-
-The token also implement the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) extension from Openzeppelin. The ERC20 Permit extension allows users to approve token transfers via signatures instead of on-chain transactions, enabling gasless approvals and improving efficiency. This feature leverages the EIP-2612 standard to facilitate off-chain authorization for token transfers.
-
-### OFT
-
-Finally, the token inherit from the [OFT](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero. The Omnichain Fungible Token (OFT) Standard allows fungible tokens to be transferred across multiple blockchains without asset wrapping or middlechains. This standard works by burning tokens on the source chain whenever an omnichain transfer is initiated, sending a message via the protocol and delivering a function call to the destination contract to mint the same number of tokens burned, creating a unified supply across all networks LayerZero supports.
 
 ## Deployment & setup
 
-The first step is to deploy the contract on all the chains you want to support by running the LayerZero deployment tool and enter `WXTZ` as deploy script tags:
+The first step is to deploy the contract on all the chains you want to support. To do so, run the LayerZero deployment tool, and use `WXTZ` as the deployment tag:
 ```
 npx hardhat lz:deploy
 ```
 
-Then, you need to `setPeer` between the tokens to create a link between them by running:
+Then, you need to create a link between the contracts by running `setPeer()`. We created a script to make this easier:
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
 ```
 
-**NB:** 
-1. You need to run this twice per connection, because each contract on both sides of the connection need to call `setPeer()`. Simply swap the source and target networks to create a link.
-2. You will also have to run twice each `setPeer()` and wait for 2 days before running the second call. This is a security measure added to the token in case one of the contracts get compromised, the users will have time to bridge back their tokens before the funds get drained.
+> 🚨🚨 **NOTE** 🚨🚨
+> 
+> Each `setPeer()` registers a one way connection between the contract on chain A and the contract on chain B. To create a link, you'll need to run the script twice by swapping the source and target networks.
+>
+> For security purposes, there is a 2 day timelock when you call `setPeer()`. Therefore, for each one-way connection, you'll need to run the script twice with a 2 day delay between calls.
 
-**Example of a link between Etherlink Testnet and Sepolia:**
-```
-targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
-targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
-```
+### Example: Etherlink Testnet and Sepolia
 
-Wait for 2 days...
+The first call will initiate the timelock:
 
 ```
 targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
+
 targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
 ```
 
-Now the contracts on Etherlink Testnet and Sepolia are connected!
+If you try to bridge tokens, the transaction will fail because of the timelock. After the timelock has expired, we can call again to create the connection.
+
+```
+targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
+
+targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
+```
+
+Now the contracts on Etherlink Testnet and Sepolia are connected and tokens can be bridged!
 
 ## Audit & Security
 
