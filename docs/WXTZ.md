@@ -44,7 +44,6 @@ The first call will initiate the timelock:
 
 ```
 targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
-
 targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
 ```
 
@@ -52,7 +51,6 @@ If you try to bridge tokens, the transaction will fail because of the timelock. 
 
 ```
 targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/setPeer.ts
-
 targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
 ```
 
