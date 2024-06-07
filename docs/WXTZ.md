@@ -56,7 +56,13 @@ targetNetworkName=sepolia npx hardhat run --network etherlinkTestnet scripts/set
 targetNetworkName=etherlinkTestnet npx hardhat run --network sepolia scripts/setPeer.ts
 ```
 
-Now the contracts on Etherlink Testnet and Sepolia are connected and tokens can be bridged!
+Now the contracts on Etherlink Testnet and Sepolia are connected and tokens can be bridged with the following script:
+
+```
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/sendToken.ts
+```
+
+**NB:** if you don't have any WXTZ on the source chain, you won't be able to send any. If you use Etherlink Testnet as the source network, the test will automatically mint you 1 WXTZ. This mint is only doable on Etherlink Testnet.
 
 ## Audit & Security
 
