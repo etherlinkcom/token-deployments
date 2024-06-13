@@ -18,7 +18,6 @@ The token follow the `WETH9` interface for compatibility purpose for the wrappin
 
 **FUNCTIONS**
 >receive()
->fallback()
 >deposit()
 >withdraw(wad)
 >totalSupply()
@@ -31,6 +30,8 @@ The token follow the `WETH9` interface for compatibility purpose for the wrappin
 >Transfer(src, dst, wad)
 >Deposit(dst, wad)
 >Withdrawal(src, wad)
+
+**NB**: The classic wrapper WETH9 version 0.4.x also support `fallback()` but we decided **to not support** it because from a security standpoint, supporting the `fallback` hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
 
 ### ERC20Permit
 
@@ -75,3 +76,20 @@ Now the contracts on Etherlink Testnet and Sepolia are connected!
 
 The contract was audited by [Omniscia.io](https://omniscia.io/), here is the link: ADD THE LINK
 
+### Note
+
+We decided to make the wrapper of the native token XTZ an OFT to enable easily cross-chain compatibility. But inevitably, it does come with additional risks of security that we identified and reduced:
+
+#### 1. Local WXTZ
+
+The local WXTZ are at risk because of the bridging system, if it gets compromised, all the XTZ in the contract on Etherlink could be stolen by a malicious attacker who connects a fake WXTZ with an infinite amount of funds on a new chain and then transfers everything on Etherlink to withdraw all the XTZ.
+
+**Solution:** We overrided the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local ones on Etherlink. If an attacker succeeds in hacking the bridge, he will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink. So all the users on Etherlink who own their WXTZ locally will still have their WXTZ backed 1:1 by an XTZ in the contract.
+
+#### 2. Bridged WXTZ
+
+As explained above, only the bridged WXTZ detained by the users on other connected chains should be at risk if the bridging system gets hacked. Still, we decided to add a mechanism to add a "backup" to protect users if this situation happens.
+
+**Solution:** We overrided the `setPeer` method used to connect or disconnect the different WXTZ contracts on different chains. We simply added a **2-day delay** between the first call of the set peer and the real execution of the method. If a hacker takes ownership of the contracts and starts connecting or disconnecting them, the users will have **2 days to bridge back** all their funds on Etherlink to be safe. It comes with a 2-day delay for us if we want to initially set up or add a new chain to the cross-chain system, but this drawback is worth the users security.
+
+By adding these two protections, we protect the users who are not using the bridge/omni-chain system, and we give a 2-day delay to all the WXTZ owners on other chains to bridge back their WXTZ on Etherlink in the worst scenario where the multisignature managing the bridging system gets compromised.
