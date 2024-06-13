@@ -62,3 +62,7 @@ To verify your contract, run the following command:
 ```
 npx hardhat verify <YOUR_CONTRACT_ADDRESS> --network <DESIRED_NETWORK> <YOUR_CONTRACT_CONSTRUCTOR_ARGS>
 ```
+
+## Audits and Security
+
+Please refer to the `Audit and Security` sections for each of the respective under `docs/`.
