@@ -9,7 +9,7 @@ The token follows the `WETH9` interface for compatibility:
 - **Wrapping XTZ**: The `deposit()` method can be called with XTZ attached to the message to wrap XTZ for WXTZ
 - **Unwrapping XTZ**: The `withdraw(wad)` method can be called unwrap `wad` WXTZ for XTZ
 
-**NB**: The classic wrapper `WETH9` version `0.4.x` also support `fallback()` but we decided **to not support** it because from a security standpoint, supporting the `fallback` hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
+**NB**: The original `WETH9` contract developed with solc version `0.4.x` also supports `fallback()`, but WXTZ does not. Supporting this hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
 
 ### Bridging with LayerZero OFT
 
