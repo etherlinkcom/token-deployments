@@ -9,6 +9,8 @@ The token follows the `WETH9` interface for compatibility:
 - **Wrapping XTZ**: The `deposit()` method can be called with XTZ attached to the message to wrap XTZ for WXTZ
 - **Unwrapping XTZ**: The `withdraw(wad)` method can be called unwrap `wad` WXTZ for XTZ
 
+**NB**: The classic wrapper `WETH9` version `0.4.x` also support `fallback()` but we decided **to not support** it because from a security standpoint, supporting the `fallback` hook would cause function signatures that do not match the contract's to act as if they are supported and successfully executed.
+
 ### Bridging with LayerZero OFT
 
 WXTZ implements the [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero. This allows WXTZ to be bridged in a secure and capital efficient way across different chains through direct minting and burning of the supply.
@@ -64,5 +66,23 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 
 ## Audit & Security
 
-The contract was audited by [Omniscia.io](https://omniscia.io/), here is the link: ADD THE LINK
+The contract was audited by [Omniscia.io](https://omniscia.io/). You can find the final report here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
+ 
 
+We decided to make WXTZ an OFT to enable easily cross-chain compatibility. However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink could be stolen by a malicious attacker as follows:
+
+1. Create and deploy a fake WXTZ contract on another EVM chain
+2. Mint a maximum amount of WXTZ on the other chain
+3. Connect to the contract on Etherlink using `setPeer()`
+4. Transfer the WXTZ to Etherlink
+5. Withdraw the XTZ locked in the WXTZ contract on Etherlink
+
+We have taken measures to protect users native to Etherlink and bridged across EVM chains:
+
+### Etherlink Users
+
+We overrode the `_credit` method used by LayerZero to bridge tokens between chains. We added a condition checking that the receiving amount of WXTZ can't exceed the amount of XTZ stored in the contract. The result is that **only the WXTZ supply bridged** using the LayerZero protocol should be at risk, and not the local WXTZ on Etherlink. If an attacker succeeds in hacking the bridge, he will only be able to transfer the difference between the amount of XTZ stored in the contract and the local total supply of WXTZ on Etherlink. So all the users on Etherlink who own their WXTZ locally will still have their WXTZ backed 1:1 by an XTZ in the contract.
+
+### Bridged Users
+
+As a backup, we also overrode the `setPeer()` method used to connect or disconnect WXTZ contracts on different chains. By adding a **2 day timelock** to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being excecuted. If a hacker takes ownership of the contracts and starts connecting or disconnecting, bridged users will have **2 days to bridge back** all their funds on Etherlink and withdraw their XTZ.
