@@ -36,7 +36,7 @@ const deploy: DeployFunction = async (hre) => {
   // }
   const endpointV2Deployment = await hre.deployments.get('EndpointV2')
 
-  const Token = await hre.ethers.getContractFactory("WXTZ")
+  const Token = await hre.ethers.getContractFactory(contractName)
   const signer = await ethers.getSigner(deployer)
   // use the chain-config file to set either the etherlink testnet id or the mainnet id
   const currentNetwork = network.config.chainId || 0;
