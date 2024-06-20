@@ -2,6 +2,11 @@ import { ethers, network } from 'hardhat';
 import etherlinkTestnetTokens from '../deployments/etherlinkTestnet.json';
 import sepoliaTokens from '../deployments/sepolia.json';
 import bscTestnetTokens from '../deployments/bscTestnet.json';
+import etherlinkTokens from '../deployments/etherlink.json';
+import mainnetTokens from '../deployments/mainnet.json';
+import arbitrumOneTokens from '../deployments/arbitrumOne.json';
+import baseTokens from '../deployments/base.json';
+import bscTokens from '../deployments/bsc.json';
 import { customFormatBytes32String } from './utils';
 import { error } from 'console';
 import { Options } from '@layerzerolabs/lz-v2-utilities';
@@ -14,11 +19,13 @@ const endpointIds: { [key: string]: string } = {
   arbitrumSepolia: '40231',
   optimismSepolia: '40232',
   etherlinkTestnet: '40239',
+  etherlink: '30292',
   mainnet: '30101',
+  arbitrumOne: '30110',
+  base: '30184',
   bsc: '30102',
   avalanche: '30106',
   polygon: '30109',
-  arbitrumOne: '30110',
   optimisticEthereum: '30111',
 };
 
@@ -31,7 +38,12 @@ async function main() {
   const WXTZDeployed: { [key: string]: string } = {
     etherlinkTestnet: etherlinkTestnetTokens.WXTZ,
     sepolia: sepoliaTokens.WXTZ,
-    bscTestnet: bscTestnetTokens.WXTZ
+    bscTestnet: bscTestnetTokens.WXTZ,
+    etherlink: etherlinkTokens.WXTZ,
+    mainnet: mainnetTokens.WXTZ,
+    arbitrumOne: arbitrumOneTokens.WXTZ,
+    base: baseTokens.WXTZ,
+    bsc: bscTokens.WXTZ
   };
   const WXTZFactory = await ethers.getContractFactory('WXTZ');
   const WXTZ = WXTZFactory.attach(WXTZDeployed[networkName]);
