@@ -6,6 +6,8 @@ typechain
 typechain-types
 .openzeppelin
 
+commands.md
+
 # Hardhat files
 cache
 artifacts

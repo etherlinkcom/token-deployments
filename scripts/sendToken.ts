@@ -8,7 +8,6 @@ import arbitrumOneTokens from '../deployments/arbitrumOne.json';
 import baseTokens from '../deployments/base.json';
 import bscTokens from '../deployments/bsc.json';
 import { customFormatBytes32String } from './utils';
-import { error } from 'console';
 import { Options } from '@layerzerolabs/lz-v2-utilities';
 
 const endpointIds: { [key: string]: string } = {
@@ -48,16 +47,19 @@ async function main() {
   const WXTZFactory = await ethers.getContractFactory('WXTZ');
   const WXTZ = WXTZFactory.attach(WXTZDeployed[networkName]);
 
+  const amount = ethers.utils.parseEther('0.01');
+
   // If this is Etherlink deposit token
-  if (networkName == 'etherlinkTestnet') {
-    console.log('Deposit 1 XTZ in the WXTZ...');
-    await WXTZ.deposit({ value: ethers.utils.parseEther('1') });
+  if (networkName == 'etherlinkTestnet' || 'etherlink') {
+    console.log(`Deposit ${ethers.utils.formatEther(amount)} XTZ in the WXTZ...`);
+    const tx = await WXTZ.deposit({ value: amount });
+    await tx.wait();
     console.log('WXTZ received.');
   }
 
   // Calculate options
   let extraOptions;
-  if (targetNetworkName == "etherlinkTestnet") {
+  if (targetNetworkName == "etherlinkTestnet" || "etherlink") {
     // If etherlink, use a lot of gas
     const option = Options.newOptions().addExecutorLzReceiveOption(ethers.utils.formatUnits(41000000, "wei"), 0);
     extraOptions = option.toHex();
@@ -70,7 +72,7 @@ async function main() {
   const sendParam = {
     dstEid: endpointIds[targetNetworkName], // Destination endpoint ID.
     to: customFormatBytes32String(owner.address), // Recipient address.
-    amountLD: ethers.utils.parseEther("1"), // Amount to send in local decimals.
+    amountLD: amount, // Amount to send in local decimals.
     minAmountLD: 0, // Minimum amount to send in local decimals.
     extraOptions: extraOptions, // Additional options supplied by the caller to be used in the LayerZero message.
     composeMsg: "0x", // The composed message for the send() operation.
@@ -92,7 +94,7 @@ async function main() {
     owner.address, // refund address
     { value: estimatedGas.nativeFee }
   );
-
+  await tx.wait();
   console.log(`See the token transfer here: https://testnet.layerzeroscan.com/tx/${tx.hash}`)
 }
 
