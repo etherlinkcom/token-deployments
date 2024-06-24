@@ -39,7 +39,7 @@ const deploy: DeployFunction = async (hre) => {
   const Token = await hre.ethers.getContractFactory(contractName)
   const signer = await ethers.getSigner(deployer)
   // use the chain-config file to set either the etherlink testnet id or the mainnet id
-  const currentNetwork = network.config.chainId || 0;
+  const currentNetwork = hre.network.config.chainId || 0;
   let etherlinkChainId;
   if (testnetChains.includes(currentNetwork)) {
     etherlinkChainId = 128123;
@@ -53,7 +53,7 @@ const deploy: DeployFunction = async (hre) => {
     endpointV2Deployment.address,
     deployer,
   );
-  await token.deployed();
+  await token.deployed(); // error on Mainnet and Bsc but not a failing deployment
   const address = await token.address;
 
   console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`);

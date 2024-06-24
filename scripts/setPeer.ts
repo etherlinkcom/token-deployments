@@ -52,12 +52,12 @@ async function main() {
     `Calling setPeer on your ${networkName} OFT for ${targetNetworkName} network.`
   );
 
-  await WXTZ.setPeer(
+  const tx = await WXTZ.setPeer(
     endpointIds[targetNetworkName],
     customFormatBytes32String(WXTZDeployed[targetNetworkName])
   );
-
-  if (WXTZ.isPeer(endpointIds[targetNetworkName], customFormatBytes32String(WXTZDeployed[targetNetworkName]))) {
+  await tx.wait();
+  if (await WXTZ.isPeer(endpointIds[targetNetworkName], customFormatBytes32String(WXTZDeployed[targetNetworkName]))) {
     console.log(
       `Your OFT on ${targetNetworkName} has been set as a peer on the ${networkName} OFT.`
     );

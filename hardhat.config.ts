@@ -79,6 +79,7 @@ const config: HardhatUserConfig = {
     sepolia: {
       eid: EndpointId.SEPOLIA_V2_TESTNET,
       url: process.env.SEPOLIA_RPC_URL || 'https://rpc.sepolia.org/',
+      chainId: 11155111,
       accounts,
     },
     etherlinkTestnet: {
@@ -155,6 +156,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://explorer.etherlink.com/api",
           browserURL: "https://explorer.etherlink.com"
+        }
+      },
+      {
+        network: "base",
+        chainId: 8453,
+        urls: {
+          apiURL: "https://api.basescan.org/api",
+          browserURL: "https://basescan.org/"
         }
       }
     ]
