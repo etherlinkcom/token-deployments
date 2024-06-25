@@ -64,6 +64,20 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 
 **NB:** if you don't have any WXTZ on the source chain, you won't be able to send any. If you use Etherlink Testnet as the source network, the test will automatically mint you 1 WXTZ. This mint is only doable on Etherlink Testnet.
 
+## Tests
+
+If you want to run the tests for the WXTZ:
+```
+npx hardhat test test/WXTZ.test.ts
+```
+
+**NB:** we do not test the OFT part here except for some basic errors because we can't easily reproduce a multi-chain setup with on a side Etherlink and on the other side a non-etherlink chain in hardhat tests.
+
+But if you need to do a real test to be sure the contracts are well connected on the different chain, you can run a script to send a token like this:
+```
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network etherlink scripts/sendToken.ts
+```
+
 ## Audit & Security
 
 The contract was audited by [Omniscia.io](https://omniscia.io/). You can find the final report here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
