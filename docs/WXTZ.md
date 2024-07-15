@@ -71,9 +71,9 @@ If you want to run the tests for the WXTZ:
 npx hardhat test test/WXTZ.test.ts
 ```
 
-**NB:** we do not test the OFT part here except for some basic errors because we can't easily reproduce a multi-chain setup with on a side Etherlink and on the other side a non-etherlink chain in hardhat tests.
+**NB:** we do not test the OFT part here except for some basic errors because we can't easily reproduce a multi-chain setup with on one side Etherlink and on the other side a non-etherlink chain in hardhat tests.
 
-But if you need to do a real test to be sure the contracts are well connected on the different chain, you can run a script to send a token like this:
+But if you need to do a real test to be sure the contracts are well connected on the different chains, you can run a script to send a token like this:
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network etherlink scripts/sendToken.ts
 ```
@@ -81,7 +81,6 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network etherlink scripts/s
 ## Audit & Security
 
 The contract was audited by [Omniscia.io](https://omniscia.io/). You can find the final report here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
- 
 
 We decided to make WXTZ an OFT to enable easily cross-chain compatibility. However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink could be stolen by a malicious attacker as follows:
 
