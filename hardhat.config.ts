@@ -76,6 +76,8 @@ const config: HardhatUserConfig = {
       initialBaseFeePerGas: 0,
       chainId: 128123 // override the chain id because some contract have restricted functionalities on other chain
     },
+
+    ///// TESTNET /////
     sepolia: {
       eid: EndpointId.SEPOLIA_V2_TESTNET,
       url: process.env.SEPOLIA_RPC_URL || 'https://rpc.sepolia.org/',
@@ -94,6 +96,8 @@ const config: HardhatUserConfig = {
       chainId: 97,
       accounts,
     },
+
+    ////// MAINNET //////
     etherlink: {
       eid: EndpointId.ETHERLINK_V2_MAINNET,
       url: process.env.ETHERLINK_RPC_URL || "https://node.mainnet.etherlink.com",
