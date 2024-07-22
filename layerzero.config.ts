@@ -1,173 +1,92 @@
-import { EndpointId, ChainKey, EndpointVersion, networkToEndpointId } from '@layerzerolabs/lz-definitions'
-
-import type { OAppOmniGraphHardhat, OmniPointHardhat } from '@layerzerolabs/toolbox-hardhat'
-
-// const etherlinkTestnetContract: OmniPointHardhat = {
-//   eid: EndpointId.ETHERLINK_V2_TESTNET,
-//   contractName: "WXTZ"
-// }
-
-// const sepoliaContract: OmniPointHardhat = {
-//   eid: EndpointId.SEPOLIA_V2_TESTNET,
-//   contractName: 'WXTZ',
-// }
-
-// const bscTestnetContract: OmniPointHardhat = {
-//   eid: EndpointId.BSC_V2_TESTNET,
-//   contractName: 'WXTZ',
-// }
-
-
-/////// MAINNET /////////
-const etherlink: OmniPointHardhat = {
-  eid: EndpointId.ETHERLINK_V2_MAINNET,
-  contractName: 'WXTZ',
-}
-
-const mainnet: OmniPointHardhat = {
-  eid: EndpointId.ETHEREUM_V2_MAINNET,
-  contractName: 'WXTZ',
-}
-
-const arbitrumOne: OmniPointHardhat = {
-  eid: EndpointId.ARBITRUM_V2_MAINNET,
-  contractName: 'WXTZ',
-}
-
-const base: OmniPointHardhat = {
+import { EndpointId } from "@layerzerolabs/lz-definitions";
+const baseContract = {
   eid: EndpointId.BASE_V2_MAINNET,
-  contractName: 'WXTZ',
-}
 
-const bsc: OmniPointHardhat = {
-  eid: EndpointId.BSC_V2_MAINNET,
-  contractName: 'WXTZ',
-}
+  contractName: "WXTZ"
+};
+const etherlinkContract = {
+  eid: EndpointId.ETHERLINK_V2_MAINNET,
 
-const config: OAppOmniGraphHardhat = {
-  contracts: [
-    { contract: etherlink },
-    { contract: mainnet },
-    { contract: arbitrumOne },
-    { contract: base },
-    { contract: bsc },
-  ],
-  connections: [
-    {
-      from: etherlink, to: base,
-      config: {
-        // Required Send library on etherlink
-        sendLibrary: "0x7cacBe439EaD55fa1c22790330b12835c6884a91",
-        receiveLibraryConfig: {
-          // Required Receive Library Address on etherlink
-          receiveLibrary: "0x282b3386571f7f794450d5789911a9804FA346b4",
-          gracePeriod: BigInt(0)
+  contractName: "WXTZ"
+};
+export default {
+  contracts:
+    [{ contract: baseContract },
+
+    { contract: etherlinkContract }],
+
+  connections: [{
+    from: baseContract,
+    to: etherlinkContract,
+    config: {
+      sendLibrary: "0xB5320B0B3a13cC860893E2Bd79FCd7e13484Dda2",
+      receiveLibraryConfig: {
+        receiveLibrary: "0xc70AB6f32772f59fBfc23889Caf4Ba3376C84bAf",
+        gracePeriod: 0
+      },
+      sendConfig: {
+        executorConfig: {
+          maxMessageSize: 10000,
+          executor: "0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4"
         },
-        sendConfig: {
-          executorConfig: {
-            maxMessageSize: 99,
-            // The configured Executor address on etherlink
-            executor: "0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e",
-          },
-          ulnConfig: {
-            // The number of block confirmations to wait on etherlink before emitting the message from the source chain (etherlink).
-            confirmations: BigInt(2),
-            // The address of the DVNs you will pay to verify a sent message on the source chain (etherlink).
-            // The destination tx will wait until ALL `requiredDVNs` verify the message.
-            requiredDVNs: [
-              "0x7a23612f07d81f16b26cf0b5a4c3eca0e8668df2",
-              "0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f"
-            ],
-            // The address of the DVNs you will pay to verify a sent message on the source chain (etherlink).
-            // The destination tx will wait until the configured threshold of `optionalDVNs` verify a message.
-            optionalDVNs: [],
-            // The number of `optionalDVNs` that need to successfully verify the message for it to be considered Verified.
-            optionalDVNThreshold: 0,
-          },
-        },
-        // Optional Receive Configuration
-        // @dev Controls how the `from` chain receives messages from the `to` chain.
-        receiveConfig: {
-          ulnConfig: {
-            // The number of block confirmations to expect from the `to` chain (base).
-            confirmations: BigInt(2),
-            // The address of the DVNs your `receiveConfig` expects to receive verifications from on the `from` chain (etherlink).
-            // The `from` chain's OApp will wait until the configured threshold of `requiredDVNs` verify the message.
-            requiredDVNs: [
-              "0x7a23612f07d81f16b26cf0b5a4c3eca0e8668df2",
-              "0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f",
-            ],
-            // The address of the `optionalDVNs` you expect to receive verifications from on the `from` chain (etherlink).
-            // The destination tx will wait until the configured threshold of `optionalDVNs` verify the message.
-            optionalDVNs: [],
-            // The number of `optionalDVNs` that need to successfully verify the message for it to be considered Verified.
-            optionalDVNThreshold: 0,
-          },
-        },
+        ulnConfig: {
+          confirmations: 10,
+          requiredDVNs: [
+            "0x9e059a54699a285714207b43B055483E78FAac25",
+            "0xcd37CA043f8479064e10635020c65FfC005d36f6"
+          ],
+          optionalDVNs: [],
+          optionalDVNThreshold: 0
+        }
+      },
+      receiveConfig: {
+        ulnConfig: {
+          confirmations: 5,
+          requiredDVNs: [
+            "0x9e059a54699a285714207b43B055483E78FAac25",
+            "0xcd37CA043f8479064e10635020c65FfC005d36f6"
+          ],
+          optionalDVNs: [],
+          optionalDVNThreshold: 0
+        }
       }
-    },
-    {
-      from: base, to: etherlink,
-      config: {
-        // Required Send library on base
-        sendLibrary: "0x9DB3714048B5499Ec65F807787897D3b3Aa70072",
-        receiveLibraryConfig: {
-          // Required Receive Library Address on base
-          receiveLibrary: "0x58D53a2d6a08B72a15137F3381d21b90638bd753",
-          gracePeriod: BigInt(0)
+    }
+  },
+  {
+    from: etherlinkContract,
+    to: baseContract,
+    config: {
+      sendLibrary: "0xc1B621b18187F74c8F6D52a6F709Dd2780C09821",
+      receiveLibraryConfig: {
+        receiveLibrary: "0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6",
+        gracePeriod: 0
+      },
+      sendConfig: {
+        executorConfig: {
+          maxMessageSize: 10000,
+          executor: "0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e"
         },
-        sendConfig: {
-          executorConfig: {
-            maxMessageSize: 99,
-            // The configured Executor address on base
-            executor: "0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4",
-          },
-          ulnConfig: {
-            // The number of block confirmations to wait on base before emitting the message from the source chain (base).
-            confirmations: BigInt(2),
-            // The address of the DVNs you will pay to verify a sent message on the source chain (base).
-            // The destination tx will wait until ALL `requiredDVNs` verify the message.
-            requiredDVNs: [
-              "0x9e059a54699a285714207b43B055483E78FAac25",
-              "0xcd37CA043f8479064e10635020c65FfC005d36f6"
-            ],
-            // The address of the DVNs you will pay to verify a sent message on the source chain (base).
-            // The destination tx will wait until the configured threshold of `optionalDVNs` verify a message.
-            optionalDVNs: [],
-            // The number of `optionalDVNs` that need to successfully verify the message for it to be considered Verified.
-            optionalDVNThreshold: 0,
-          },
-        },
-        // Optional Receive Configuration
-        // @dev Controls how the `from` chain receives messages from the `to` chain.
-        receiveConfig: {
-          ulnConfig: {
-            // The number of block confirmations to expect from the `to` chain (etherlink).
-            confirmations: BigInt(2),
-            // The address of the DVNs your `receiveConfig` expects to receive verifications from on the `from` chain (etherlink).
-            // The `from` chain's OApp will wait until the configured threshold of `requiredDVNs` verify the message.
-            requiredDVNs: [
-              "0x9e059a54699a285714207b43B055483E78FAac25",
-              "0xcd37CA043f8479064e10635020c65FfC005d36f6"
-            ],
-            // The address of the `optionalDVNs` you expect to receive verifications from on the `from` chain (etherlink).
-            // The destination tx will wait until the configured threshold of `optionalDVNs` verify the message.
-            optionalDVNs: [],
-            // The number of `optionalDVNs` that need to successfully verify the message for it to be considered Verified.
-            optionalDVNThreshold: 0,
-          },
-        },
+        ulnConfig: {
+          confirmations: 5,
+          requiredDVNs: [
+            "0x7a23612f07d81f16b26cf0b5a4c3eca0e8668df2",
+            "0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f"
+          ],
+          optionalDVNs: [],
+          optionalDVNThreshold: 0
+        }
+      },
+      receiveConfig: {
+        ulnConfig: {
+          confirmations: 10,
+          requiredDVNs: [
+            "0x7a23612f07d81f16b26cf0b5a4c3eca0e8668df2",
+            "0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f"
+          ],
+          optionalDVNs: [],
+          optionalDVNThreshold: 0
+        }
       }
-    },
-    // { from: etherlink, to: mainnet },
-    // { from: mainnet, to: etherlink },
-    // { from: etherlink, to: arbitrumOne },
-    // { from: arbitrumOne, to: etherlink },
-    // { from: etherlink, to: base },
-    // { from: base, to: etherlink },
-    // { from: etherlink, to: bsc },
-    // { from: bsc, to: etherlink },
-  ],
-}
-
-export default config
+    }
+  }]
+};
