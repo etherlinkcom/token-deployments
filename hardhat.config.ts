@@ -146,8 +146,8 @@ const config: HardhatUserConfig = {
         network: "etherlinkTestnet",
         chainId: 128123,
         urls: {
-          apiURL: "https://testnet-explorer.etherlink.com/api",
-          browserURL: "https://testnet-explorer.etherlink.com"
+          apiURL: "https://testnet.explorer.etherlink.com/api",
+          browserURL: "https://testnet.explorer.etherlink.com"
         }
       },
       {
