@@ -59,7 +59,7 @@ async function main() {
 
   // Calculate options
   let extraOptions;
-  if (targetNetworkName == "etherlinkTestnet" || "etherlink") {
+  if (targetNetworkName == "etherlinkTestnet" || targetNetworkName == "etherlink") {
     // If etherlink, use a lot of gas
     const option = Options.newOptions().addExecutorLzReceiveOption(ethers.utils.formatUnits(41000000, "wei"), 0);
     extraOptions = option.toHex();
@@ -68,7 +68,7 @@ async function main() {
     extraOptions = "0x00030100110100000000000000000000000000030d40";
   }
 
-  console.log("quoteSend:");
+  console.log("quoteSend parameters:");
   console.log("dstEid", endpointIds[targetNetworkName]);
   console.log("to", customFormatBytes32String(owner.address));
   console.log("amountLD", amount);
