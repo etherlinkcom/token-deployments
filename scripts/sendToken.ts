@@ -50,7 +50,7 @@ async function main() {
   const amount = ethers.utils.parseEther('0.01');
 
   // If this is Etherlink deposit token
-  if (networkName == 'etherlinkTestnet' || 'etherlink') {
+  if (networkName == 'etherlinkTestnet' || networkName == 'etherlink') {
     console.log(`Deposit ${ethers.utils.formatEther(amount)} XTZ in the WXTZ...`);
     const tx = await WXTZ.deposit({ value: amount });
     await tx.wait();
@@ -67,6 +67,15 @@ async function main() {
     // If classic EVM, use 200000 wei (recommended by documentation)
     extraOptions = "0x00030100110100000000000000000000000000030d40";
   }
+
+  console.log("quoteSend:");
+  console.log("dstEid", endpointIds[targetNetworkName]);
+  console.log("to", customFormatBytes32String(owner.address));
+  console.log("amountLD", amount);
+  console.log("minAmountLD", 0);
+  console.log("extraOptions", extraOptions);
+  console.log("composeMsg", "0x");
+  console.log("oftCmd", "0x");
 
   // Estimate gas
   const sendParam = {
