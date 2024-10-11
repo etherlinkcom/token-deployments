@@ -1,0 +1,680 @@
+###################### etherlink <> mainnet ######################
+etherlink <> mainnet is peer: true
+
+WXTZ config from etherlink to mainnet
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e 
+
+Send Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Enforced option from etherlink to mainnet is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### mainnet <> etherlink ######################
+mainnet <> etherlink is peer: true
+
+WXTZ config from mainnet to etherlink
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x173272739Bd7Aa6e4e214714048a9fE699453059 
+
+Send Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+optionalDVNs: [] 
+
+Enforced option from mainnet to etherlink is set to 0x00030100110100000000000000000000000002719c40
+######################################################################
+
+###################### etherlink <> arbitrumOne ######################
+etherlink <> arbitrumOne is peer: true
+
+WXTZ config from etherlink to arbitrumOne
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e 
+
+Send Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Enforced option from etherlink to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### arbitrumOne <> etherlink ######################
+arbitrumOne <> etherlink is peer: true
+
+WXTZ config from arbitrumOne to etherlink
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x31CAe3B7fB82d847621859fb1585353c5720660D 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+optionalDVNs: [] 
+
+Enforced option from arbitrumOne to etherlink is set to 0x00030100110100000000000000000000000002719c40
+######################################################################
+
+###################### etherlink <> base ######################
+etherlink <> base is peer: true
+
+WXTZ config from etherlink to base
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e 
+
+Send Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Enforced option from etherlink to base is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### base <> etherlink ######################
+base <> etherlink is peer: true
+
+WXTZ config from base to etherlink
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4 
+
+Send Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+optionalDVNs: [] 
+
+Enforced option from base to etherlink is set to 0x00030100110100000000000000000000000002719c40
+######################################################################
+
+###################### etherlink <> bsc ######################
+etherlink <> bsc is peer: true
+
+WXTZ config from etherlink to bsc
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e 
+
+Send Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+optionalDVNs: [] 
+
+Enforced option from etherlink to bsc is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### bsc <> etherlink ######################
+bsc <> etherlink is peer: true
+
+WXTZ config from bsc to etherlink
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 1 (0x01)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Enforced option from bsc to etherlink is set to 0x00030100110100000000000000000000000002719c40
+######################################################################
+
+###################### mainnet <> arbitrumOne ######################
+mainnet <> arbitrumOne is peer: true
+
+WXTZ config from mainnet to arbitrumOne
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x173272739Bd7Aa6e4e214714048a9fE699453059 
+
+Send Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from mainnet to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### arbitrumOne <> mainnet ######################
+arbitrumOne <> mainnet is peer: true
+
+WXTZ config from arbitrumOne to mainnet
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x31CAe3B7fB82d847621859fb1585353c5720660D 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from arbitrumOne to mainnet is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### mainnet <> base ######################
+mainnet <> base is peer: true
+
+WXTZ config from mainnet to base
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x173272739Bd7Aa6e4e214714048a9fE699453059 
+
+Send Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from mainnet to base is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### base <> mainnet ######################
+base <> mainnet is peer: true
+
+WXTZ config from base to mainnet
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4 
+
+Send Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from base to mainnet is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### mainnet <> bsc ######################
+mainnet <> bsc is peer: true
+
+WXTZ config from mainnet to bsc
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x173272739Bd7Aa6e4e214714048a9fE699453059 
+
+Send Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from mainnet to bsc is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### bsc <> mainnet ######################
+bsc <> mainnet is peer: true
+
+WXTZ config from bsc to mainnet
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 15 (0x0f)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Enforced option from bsc to mainnet is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### arbitrumOne <> base ######################
+arbitrumOne <> base is peer: true
+
+WXTZ config from arbitrumOne to base
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x31CAe3B7fB82d847621859fb1585353c5720660D 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from arbitrumOne to base is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### base <> arbitrumOne ######################
+base <> arbitrumOne is peer: true
+
+WXTZ config from base to arbitrumOne
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4 
+
+Send Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from base to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### arbitrumOne <> bsc ######################
+arbitrumOne <> bsc is peer: true
+
+WXTZ config from arbitrumOne to bsc
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x31CAe3B7fB82d847621859fb1585353c5720660D 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from arbitrumOne to bsc is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### bsc <> arbitrumOne ######################
+bsc <> arbitrumOne is peer: true
+
+WXTZ config from bsc to arbitrumOne
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Enforced option from bsc to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### base <> bsc ######################
+base <> bsc is peer: true
+
+WXTZ config from base to bsc
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4 
+
+Send Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+optionalDVNs: [] 
+
+Enforced option from base to bsc is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+
+###################### bsc <> base ######################
+bsc <> base is peer: true
+
+WXTZ config from bsc to base
+
+Send Library Executor Config:
+maxMessageSize: 10000
+executorAddress: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859 
+
+Send Library ULN Config:
+confirmations: 20 (0x14)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Receive Library ULN Config:
+confirmations: 10 (0x0a)
+requiredDVNCount: 2
+optionalDVNCount: 0
+optionalDVNThreshold: 0
+requiredDVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+optionalDVNs: [] 
+
+Enforced option from bsc to base is set to 0x00030100110100000000000000000000000000030d40
+######################################################################
+

@@ -58,15 +58,17 @@ async function main() {
   }
 
   // Calculate options
-  let extraOptions;
-  if (targetNetworkName == "etherlinkTestnet" || targetNetworkName == "etherlink") {
-    // If etherlink, use a lot of gas
-    const option = Options.newOptions().addExecutorLzReceiveOption(ethers.utils.formatUnits(41000000, "wei"), 0);
-    extraOptions = option.toHex();
-  } else {
-    // If classic EVM, use 200000 wei (recommended by documentation)
-    extraOptions = "0x00030100110100000000000000000000000000030d40";
-  }
+  let extraOptions = "0x";
+  // Enforced so no need to set it as an extra option anymore
+  // /!\ WARNING /!\ - if the quote fails it can come from that! (check the option on the pathway)
+  // if (targetNetworkName == "etherlinkTestnet" || targetNetworkName == "etherlink") {
+  //   // If etherlink, use a lot of gas
+  //   const option = Options.newOptions().addExecutorLzReceiveOption(ethers.utils.formatUnits(41000000, "wei"), 0);
+  //   extraOptions = option.toHex();
+  // } else {
+  //   // If classic EVM, use 200000 wei (recommended by documentation)
+  //   extraOptions = "0x00030100110100000000000000000000000000030d40";
+  // }
 
   console.log("quoteSend parameters:");
   console.log("dstEid", endpointIds[targetNetworkName]);
