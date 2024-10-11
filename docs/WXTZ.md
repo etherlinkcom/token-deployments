@@ -29,6 +29,8 @@ The first step is to deploy the contract on all the chains you want to support. 
 npx hardhat lz:deploy
 ```
 
+### Peer
+
 Then, you need to create a link between the contracts by running `setPeer()`. We created a script to make this easier:
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
@@ -39,6 +41,30 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 > Each `setPeer()` registers a one way connection between the contract on chain A and the contract on chain B. To create a link, you'll need to run the script twice by swapping the source and target networks.
 >
 > For security purposes, there is a 2 day timelock when you call `setPeer()`. Therefore, for each one-way connection, you'll need to run the script twice with a 2 day delay between calls.
+
+### Config (optionnal)
+
+You can also setup the config of the token. The WXTZ config was setup by the Etherlink team manually because the default config on the pathways including Etherlink is not setup yet. Modify the `setConfig.ts` file and run it:
+```
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setConfig.ts
+```
+
+> 🚨🚨 **NOTE** 🚨🚨
+> 
+> For Etherlink, the block confirmation number is set to 1 because we know that the DVNs used in our config are running **a high latency node**. Be careful though; if you set up a number too low for the chain, it could lead to money lost.
+
+### Options
+
+Another important point is the "option" part. You have to specify the amount of gas you will use on the destination chain. We enforced that option on all the pathways for the WXTZ so you don't have to worry about. Here is the [LayerZero official documentation](https://docs.layerzero.network/v2/developers/evm/protocol-gas-settings/options) about this subject.
+
+You can enforce the option by running:
+```
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setEnforcedOption.ts
+```
+
+> 🚨🚨 **NOTE** 🚨🚨
+> 
+> The gas calculation is different on Etherlink so you will have to rise the gas amount for the option compare to the other EVM chains.
 
 ### Example: Etherlink Testnet and Sepolia
 
@@ -99,3 +125,10 @@ We overrode the `_credit` method used by LayerZero to bridge tokens between chai
 ### Bridged Users
 
 As a backup, we also overrode the `setPeer()` method used to connect or disconnect WXTZ contracts on different chains. By adding a **2 day timelock** to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being excecuted. If a hacker takes ownership of the contracts and starts connecting or disconnecting, bridged users will have **2 days to bridge back** all their funds on Etherlink and withdraw their XTZ.
+
+## Helpers
+
+We added some scripts at the root of the project (for the moment all related to the WXTZ):
+- `mapWXTZ.sh` - use to generate a file with all the details of the pathways
+- `fullMesh.sh` - use to setPeer the different WXTZ on all the pathways
+- `setEnforcedOption.sh` - use to enforce the option on the WXTZ on all the pathways
