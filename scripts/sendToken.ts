@@ -106,7 +106,7 @@ async function main() {
     { value: estimatedGas.nativeFee }
   );
   await tx.wait();
-  console.log(`See the token transfer here: https://testnet.layerzeroscan.com/tx/${tx.hash}`)
+  console.log(`See the token transfer here: https://layerzeroscan.com/tx/${tx.hash}`)
 }
 
 main().catch((error) => {
