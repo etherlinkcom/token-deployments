@@ -15,6 +15,8 @@ The token follows the `WETH9` interface for compatibility:
 
 WXTZ implements the [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart) standard from LayerZero. This allows WXTZ to be bridged in a secure and capital efficient way across different chains through direct minting and burning of the supply.
 
+You can find a complete overview of the configuration in the `WXTZ_fullConfig.log` file.
+
 ### Gasless Approval with ERC20Permit
 
 The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin. This allows users to approve token transfers via gasless signatures instead of on-chain transactions. 
@@ -44,14 +46,14 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 
 ### Config (optionnal)
 
-You can also setup the config of the token. The WXTZ config was setup by the Etherlink team manually because the default config on the pathways including Etherlink is not setup yet. Modify the `setConfig.ts` file and run it:
+You can also setup the config of the token. The WXTZ config was setup by the Etherlink team manually because the default config on the pathways including Etherlink is not setup yet, the script used is for the moment private. If you want to apply the default config (if this default config has been setup by LayerZero on the pathway), you can use the `applyDefaultConfig.ts` script. You would need to modify it so that the script uses your OFT. Note that this script is doing the 2 sides of the pathway (e.g. Etherlink <> Ethereum AND Ethereum <> Etherlink). If you want to run it:
 ```
-targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setConfig.ts
+targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/applyDefaultConfig.ts
 ```
 
 > 🚨🚨 **NOTE** 🚨🚨
 > 
-> For Etherlink, the block confirmation number is set to 1 because we know that the DVNs used in our config are running **a high latency node**. Be careful though; if you set up a number too low for the chain, it could lead to money lost.
+> For Etherlink, the block confirmation number is set to 1 because we know that the DVNs used in our config are running **a high latency node**. Be careful though; if you set up a number too low for the chain and the DVNs are using classic nodes, it could lead to money lost.
 
 ### Options
 
@@ -65,6 +67,15 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 > 🚨🚨 **NOTE** 🚨🚨
 > 
 > The gas calculation is different on Etherlink so you will have to rise the gas amount for the option compare to the other EVM chains.
+
+### Debug
+
+If you want to check all the information about your OFT, you can use the `getFullConfig.ts` script. First you need to modify the addresses, the chains and the providers in the script. Then you can run it:
+```
+npx hardhat run scripts/getFullConfig.ts >> WXTZ_fullConfig_after.log
+```
+
+This will generate a `WXTZ_fullConfig_after.log` with the complete setup of your OFT including the configuration, the enforced options, the libraries, etc.
 
 ### Example: Etherlink Testnet and Sepolia
 
@@ -106,7 +117,9 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network etherlink scripts/s
 
 ## Audit & Security
 
-The contract was audited by [Omniscia.io](https://omniscia.io/). You can find the final report here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b
+The contract was audited by [Omniscia.io](https://omniscia.io/). You can find the final report here: https://omniscia.io/reports/etherlink-cross-chain-token-665c8ac479e20900180f383b.
+
+The OFT configuration and setup part has been audited by Inference. You can find it here: ADD LINK.
 
 We decided to make WXTZ an OFT to enable easily cross-chain compatibility. However, if the OFT bridge gets compromised, all the XTZ in the contract on Etherlink could be stolen by a malicious attacker as follows:
 
@@ -126,9 +139,14 @@ We overrode the `_credit` method used by LayerZero to bridge tokens between chai
 
 As a backup, we also overrode the `setPeer()` method used to connect or disconnect WXTZ contracts on different chains. By adding a **2 day timelock** to the `setPeer()` method, there is a 2 day delay between initially creating a connection and the connection being excecuted. If a hacker takes ownership of the contracts and starts connecting or disconnecting, bridged users will have **2 days to bridge back** all their funds on Etherlink and withdraw their XTZ.
 
+### General
+
+Whether the WXTZs are bridged or not, this token, like all the other tokens on Etherlink, relies on the fact that at least one honest operator is monitoring the Etherlink chain to secure it. You can find all the information around the current operators and how to become one in the [official documentation](https://docs.etherlink.com/network/operators).
+
 ## Helpers
 
-We added some scripts at the root of the project (for the moment all related to the WXTZ):
+We added some scripts at the root of the project (for the moment all related to the WXTZ to facilitate his deployment and setup):
 - `mapWXTZ.sh` - use to generate a file with all the details of the pathways
 - `fullMesh.sh` - use to setPeer the different WXTZ on all the pathways
 - `setEnforcedOption.sh` - use to enforce the option on the WXTZ on all the pathways
+- `applyDefaultConfig.sh` - use to apply the default config on the WXTZ, apply the send and receive libraries and the default config on them (Security stack and Executor)

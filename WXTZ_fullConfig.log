@@ -1,0 +1,1361 @@
+*******************************************************************************
+Configuration on etherlink (30292)
+*******************************************************************************
+
+OFT address: 0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+Configured owner for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+Configured endpoint address for OApp is: 0xAaB5A48CFC03Efa9cC34A2C1aAcCCB84b4b770e4
+Ok, the configured OApp address is the official one.
+
+Registered delegate in endpoint for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+******************************************
+Remote chain: mainnet (30101)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xc1B621b18187F74c8F6D52a6F709Dd2780C09821
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from etherlink to mainnet is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: arbitrumOne (30110)
+******************************************
+
+Configured peer in OApp is: 0x0000000000000000000000007424f00845777a06e21f0bd8873f814a8a814b2d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xc1B621b18187F74c8F6D52a6F709Dd2780C09821
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from etherlink to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: bsc (30102)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xc1B621b18187F74c8F6D52a6F709Dd2780C09821
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from etherlink to bsc is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: base (30184)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xc1B621b18187F74c8F6D52a6F709Dd2780C09821
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0xa20DB4Ffe74A31D17fc24BD32a7DD7555441058e
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x377530cdA84DFb2673bF4d145DCF0C4D7fdcB5b6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x7a23612F07d81F16B26cF0b5a4C3eca0E8668df2',
+  '0xc097ab8CD7b053326DFe9fB3E3a31a0CCe3B526f'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from etherlink to base is set to 0x00030100110100000000000000000000000000030d40
+
+*******************************************************************************
+Configuration on mainnet (30101)
+*******************************************************************************
+
+OFT address: 0xc9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+Configured owner for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+Configured endpoint address for OApp is: 0x1a44076050125825900e736c501f859c50fE728c
+Ok, the configured OApp address is the official one.
+
+Registered delegate in endpoint for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+******************************************
+Remote chain: etherlink (30292)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xbB2Ea70C9E858123480642Cf96acbcCE1372dCe1
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x173272739Bd7Aa6e4e214714048a9fE699453059
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc02Ab410f0734EFa3F14628780e6e695156024C2
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xa59BA433ac34D2927232918Ef5B2eaAfcF130BA5'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from mainnet to etherlink is set to 0x00030100110100000000000000000000000002719c40
+
+******************************************
+Remote chain: arbitrumOne (30110)
+******************************************
+
+Configured peer in OApp is: 0x0000000000000000000000007424f00845777a06e21f0bd8873f814a8a814b2d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xbB2Ea70C9E858123480642Cf96acbcCE1372dCe1
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x173272739Bd7Aa6e4e214714048a9fE699453059
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc02Ab410f0734EFa3F14628780e6e695156024C2
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from mainnet to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: bsc (30102)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xbB2Ea70C9E858123480642Cf96acbcCE1372dCe1
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x173272739Bd7Aa6e4e214714048a9fE699453059
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc02Ab410f0734EFa3F14628780e6e695156024C2
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from mainnet to bsc is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: base (30184)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xbB2Ea70C9E858123480642Cf96acbcCE1372dCe1
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x173272739Bd7Aa6e4e214714048a9fE699453059
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc02Ab410f0734EFa3F14628780e6e695156024C2
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x589dEDbD617e0CBcB916A9223F4d1300c294236b',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from mainnet to base is set to 0x00030100110100000000000000000000000000030d40
+
+*******************************************************************************
+Configuration on arbitrumOne (30110)
+*******************************************************************************
+
+OFT address: 0x7424f00845777A06E21F0bd8873f814A8A814B2D
+Configured owner for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+Configured endpoint address for OApp is: 0x1a44076050125825900e736c501f859c50fE728c
+Ok, the configured OApp address is the official one.
+
+Registered delegate in endpoint for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+******************************************
+Remote chain: etherlink (30292)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x975bcD720be66659e3EB3C0e4F1866a3020E493A
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x31CAe3B7fB82d847621859fb1585353c5720660D
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x7B9E184e07a6EE1aC23eAe0fe8D6Be2f663f05e6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xa7b5189bcA84Cd304D8553977c7C614329750d99'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from arbitrumOne to etherlink is set to 0x00030100110100000000000000000000000002719c40
+
+******************************************
+Remote chain: mainnet (30101)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x975bcD720be66659e3EB3C0e4F1866a3020E493A
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x31CAe3B7fB82d847621859fb1585353c5720660D
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x7B9E184e07a6EE1aC23eAe0fe8D6Be2f663f05e6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from arbitrumOne to mainnet is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: bsc (30102)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x975bcD720be66659e3EB3C0e4F1866a3020E493A
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x31CAe3B7fB82d847621859fb1585353c5720660D
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x7B9E184e07a6EE1aC23eAe0fe8D6Be2f663f05e6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from arbitrumOne to bsc is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: base (30184)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x975bcD720be66659e3EB3C0e4F1866a3020E493A
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x31CAe3B7fB82d847621859fb1585353c5720660D
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0x7B9E184e07a6EE1aC23eAe0fe8D6Be2f663f05e6
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x2f55C492897526677C5B68fb199ea31E2c126416',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from arbitrumOne to base is set to 0x00030100110100000000000000000000000000030d40
+
+*******************************************************************************
+Configuration on bsc (30102)
+*******************************************************************************
+
+OFT address: 0x91F9cc2649ac70a071602cadE9b0C1A5868af51D
+Configured owner for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+Configured endpoint address for OApp is: 0x1a44076050125825900e736c501f859c50fE728c
+Ok, the configured OApp address is the official one.
+
+Registered delegate in endpoint for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+******************************************
+Remote chain: etherlink (30292)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x9F8C645f2D0b2159767Bd6E0839DE4BE49e823DE
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xB217266c3A98C8B2709Ee26836C98cf12f6cCEC1
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x31F748a368a893Bdb5aBB67ec95F232507601A73',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from bsc to etherlink is set to 0x00030100110100000000000000000000000002719c40
+
+******************************************
+Remote chain: mainnet (30101)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x9F8C645f2D0b2159767Bd6E0839DE4BE49e823DE
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xB217266c3A98C8B2709Ee26836C98cf12f6cCEC1
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from bsc to mainnet is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: arbitrumOne (30110)
+******************************************
+
+Configured peer in OApp is: 0x0000000000000000000000007424f00845777a06e21f0bd8873f814a8a814b2d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x9F8C645f2D0b2159767Bd6E0839DE4BE49e823DE
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xB217266c3A98C8B2709Ee26836C98cf12f6cCEC1
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from bsc to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: base (30184)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0x9F8C645f2D0b2159767Bd6E0839DE4BE49e823DE
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x3ebD570ed38B1b3b4BC886999fcF507e9D584859
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xB217266c3A98C8B2709Ee26836C98cf12f6cCEC1
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc',
+  '0xfD6865c841c2d64565562fCc7e05e619A30615f0'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from bsc to base is set to 0x00030100110100000000000000000000000000030d40
+
+*******************************************************************************
+Configuration on base (30184)
+*******************************************************************************
+
+OFT address: 0x91F9cc2649ac70a071602cadE9b0C1A5868af51D
+Configured owner for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+Configured endpoint address for OApp is: 0x1a44076050125825900e736c501f859c50fE728c
+Ok, the configured OApp address is the official one.
+
+Registered delegate in endpoint for OApp is: 0x21c79736B62A0C9a1c843D9F99049Bac391B9A05
+
+******************************************
+Remote chain: etherlink (30292)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xB5320B0B3a13cC860893E2Bd79FCd7e13484Dda2
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc70AB6f32772f59fBfc23889Caf4Ba3376C84bAf
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 1
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 1 (0x01)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xcd37CA043f8479064e10635020c65FfC005d36f6'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from base to etherlink is set to 0x00030100110100000000000000000000000002719c40
+
+******************************************
+Remote chain: mainnet (30101)
+******************************************
+
+Configured peer in OApp is: 0x000000000000000000000000c9b53ab2679f573e480d01e0f49e2b5cfb7a3eab
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xB5320B0B3a13cC860893E2Bd79FCd7e13484Dda2
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc70AB6f32772f59fBfc23889Caf4Ba3376C84bAf
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 15
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 15 (0x0f)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from base to mainnet is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: arbitrumOne (30110)
+******************************************
+
+Configured peer in OApp is: 0x0000000000000000000000007424f00845777a06e21f0bd8873f814a8a814b2d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xB5320B0B3a13cC860893E2Bd79FCd7e13484Dda2
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc70AB6f32772f59fBfc23889Caf4Ba3376C84bAf
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from base to arbitrumOne is set to 0x00030100110100000000000000000000000000030d40
+
+******************************************
+Remote chain: bsc (30102)
+******************************************
+
+Configured peer in OApp is: 0x00000000000000000000000091f9cc2649ac70a071602cade9b0c1a5868af51d
+
+Ok. Peer address is the correct one.
+
+Analyse SEND library:
+Configured send library is: 0xB5320B0B3a13cC860893E2Bd79FCd7e13484Dda2
+Is default send library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 10
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 10 (0x0a)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+OApp specific send library configuration (Executor):
+- Max message size: 10000
+- Executor address: 0x2CCA08ae69E0C44b18a57Ab2A87644234dAebaE4
+Analyse SEND library finished.
+
+Analyse RECEIVE library:
+Configured receive library is: 0xc70AB6f32772f59fBfc23889Caf4Ba3376C84bAf
+Is default receive library used? false
+OApp specific library configuration (Security Stack):
+- Confirmations: 20
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: []
+OApp library configuration:
+- Confirmations: 20 (0x14)
+- Required DVN Count: 2
+- Optional DVN Count: 0
+- Optional DVN Threshold: 0
+- Required DVNs: [
+  '0x9e059a54699a285714207b43B055483E78FAac25',
+  '0xD56e4eAb23cb81f43168F9F45211Eb027b9aC7cc'
+]
+- Optional DVNs: [] 
+
+Analyse RECEIVE library finished.
+
+Enforced option from base to bsc is set to 0x00030100110100000000000000000000000000030d40
+
+Script completed successfully.
