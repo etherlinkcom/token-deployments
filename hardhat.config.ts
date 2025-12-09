@@ -88,6 +88,12 @@ const config: HardhatUserConfig = {
       chainId: 128123,
       accounts,
     },
+    etherlinkShadownetTestnet: {
+      eid: EndpointId.ETHERLINKSHADOWNET_V2_TESTNET,
+      url: process.env.ETHERLINK_SHADOWNET_TESTNET_RPC_URL || "https://node.shadownet.etherlink.com",
+      chainId: 127823,
+      accounts,
+    },
     bscTestnet: {
       eid: EndpointId.BSC_V2_TESTNET,
       url: process.env.BSC_TESTNET_RPC_URL || "https://bsc-testnet.publicnode.com",
@@ -133,6 +139,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       etherlinkTestnet: "YOU_CAN_COPY_ME",
+      etherlinkShadownetTestnet: "YOU_CAN_COPY_ME",
       bscTestnet: process.env.BSCSCAN_API_KEY || "",
       sepolia: process.env.ETHERSCAN_API_KEY || "",
       etherlink: "YOU_CAN_COPY_ME",
@@ -148,6 +155,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://testnet-explorer.etherlink.com/api",
           browserURL: "https://testnet-explorer.etherlink.com"
+        }
+      },
+      {
+        network: "etherlinkShadownetTestnet",
+        chainId: 127823,
+        urls: {
+          apiURL: "https://shadownet.explorer.etherlink.com/api",
+          browserURL: "https://shadownet.explorer.etherlink.com"
         }
       },
       {
