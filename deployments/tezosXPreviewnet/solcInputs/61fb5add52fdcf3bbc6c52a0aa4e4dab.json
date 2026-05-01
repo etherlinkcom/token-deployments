@@ -1,0 +1,37 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/mocks/tezosXPreviewnet/EndpointV2Stub.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\n/// @title EndpointV2Stub (tezosXPreviewnet ONLY — DO NOT DEPLOY ELSEWHERE)\n/// @notice Stand-in for `ILayerZeroEndpointV2` so OFT-based contracts can be\n///         deployed on the ephemeral tezosXPreviewnet chain, which has no real\n///         LayerZero infrastructure.\n/// @dev    Implements only `setDelegate(address)` — the single endpoint method\n///         invoked from `OAppCore`'s constructor. Cross-chain send/receive,\n///         quoting, and config flows are intentionally absent and will not\n///         work. Delete this contract and its deployment when previewnet is\n///         decommissioned.\ncontract EndpointV2Stub {\n    event DelegateSet(address indexed oapp, address indexed delegate);\n\n    mapping(address oapp => address delegate) public delegates;\n\n    function setDelegate(address _delegate) external {\n        delegates[msg.sender] = _delegate;\n        emit DelegateSet(msg.sender, _delegate);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "viaIR": true,
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
