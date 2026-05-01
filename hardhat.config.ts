@@ -94,6 +94,11 @@ const config: HardhatUserConfig = {
             chainId: 127823,
             accounts,
         },
+        tezosXPreviewnet: {
+            url: process.env.TEZOS_X_PREVIEWNET_RPC_URL || 'https://evm.previewnet.tezosx.nomadic-labs.com',
+            chainId: 128064,
+            accounts,
+        },
         bscTestnet: {
             eid: EndpointId.BSC_V2_TESTNET,
             url: process.env.BSC_TESTNET_RPC_URL || 'https://bsc-testnet.publicnode.com',
@@ -140,6 +145,7 @@ const config: HardhatUserConfig = {
         apiKey: {
             etherlinkTestnet: 'YOU_CAN_COPY_ME',
             etherlinkShadownetTestnet: 'YOU_CAN_COPY_ME',
+            tezosXPreviewnet: 'YOU_CAN_COPY_ME',
             bscTestnet: process.env.BSCSCAN_API_KEY || '',
             sepolia: process.env.ETHERSCAN_API_KEY || '',
             etherlink: 'YOU_CAN_COPY_ME',
@@ -163,6 +169,14 @@ const config: HardhatUserConfig = {
                 urls: {
                     apiURL: 'https://shadownet.explorer.etherlink.com/api',
                     browserURL: 'https://shadownet.explorer.etherlink.com',
+                },
+            },
+            {
+                network: 'tezosXPreviewnet',
+                chainId: 128064,
+                urls: {
+                    apiURL: 'https://blockscout.previewnet.tezosx.nomadic-labs.com/api',
+                    browserURL: 'https://blockscout.previewnet.tezosx.nomadic-labs.com',
                 },
             },
             {
