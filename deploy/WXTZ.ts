@@ -1,9 +1,10 @@
 import assert from 'assert'
-import { type DeployFunction } from 'hardhat-deploy/types'
-import { updateDeploymentFile } from '../scripts/utils'
-import { testnetChains, mainnetChains } from '../chain-config'
-import { network } from 'hardhat'
 import { error } from 'console'
+
+import { type DeployFunction } from 'hardhat-deploy/types'
+
+import { mainnetChains, testnetChains } from '../chain-config'
+import { updateDeploymentFile } from '../scripts/utils'
 
 const contractName = 'WXTZ'
 
@@ -43,6 +44,8 @@ const deploy: DeployFunction = async (hre) => {
     let etherlinkChainId
     if (currentNetwork == 127823) {
         etherlinkChainId = 127823
+    } else if (currentNetwork == 128064) {
+        etherlinkChainId = 128064
     } else if (testnetChains.includes(currentNetwork)) {
         etherlinkChainId = 128123
     } else if (mainnetChains.includes(currentNetwork)) {

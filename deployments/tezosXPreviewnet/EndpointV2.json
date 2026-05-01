@@ -1,0 +1,117 @@
+{
+  "address": "0xF01b3160F2926420C7416ddA62544969063269ED",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "delegate",
+          "type": "address"
+        }
+      ],
+      "name": "DelegateSet",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        }
+      ],
+      "name": "delegates",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "delegate",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_delegate",
+          "type": "address"
+        }
+      ],
+      "name": "setDelegate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x976e9d5b9974bdd25f8952ab954f5758bbd37546b9494be73b1b5caad89186ec",
+  "receipt": {
+    "to": null,
+    "from": "0x6CB66f82a59C5B4F487FAC590E02e385460169fe",
+    "contractAddress": "0xF01b3160F2926420C7416ddA62544969063269ED",
+    "transactionIndex": 0,
+    "gasUsed": "1929087",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x1c93c98950db6dfdd540c0e1f71cb06cfc04b22d7787ac5a7559e6cfb498f54d",
+    "transactionHash": "0x976e9d5b9974bdd25f8952ab954f5758bbd37546b9494be73b1b5caad89186ec",
+    "logs": [],
+    "blockNumber": 98513,
+    "cumulativeGasUsed": "1929087",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "61fb5add52fdcf3bbc6c52a0aa4e4dab",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.22+commit.4fc1097e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oapp\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegate\",\"type\":\"address\"}],\"name\":\"DelegateSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oapp\",\"type\":\"address\"}],\"name\":\"delegates\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"delegate\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_delegate\",\"type\":\"address\"}],\"name\":\"setDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Implements only `setDelegate(address)` \\u2014 the single endpoint method         invoked from `OAppCore`'s constructor. Cross-chain send/receive,         quoting, and config flows are intentionally absent and will not         work. Delete this contract and its deployment when previewnet is         decommissioned.\",\"kind\":\"dev\",\"methods\":{},\"title\":\"EndpointV2Stub (tezosXPreviewnet ONLY \\u2014 DO NOT DEPLOY ELSEWHERE)\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Stand-in for `ILayerZeroEndpointV2` so OFT-based contracts can be         deployed on the ephemeral tezosXPreviewnet chain, which has no real         LayerZero infrastructure.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mocks/tezosXPreviewnet/EndpointV2Stub.sol\":\"EndpointV2Stub\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"contracts/mocks/tezosXPreviewnet/EndpointV2Stub.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.20;\\n\\n/// @title EndpointV2Stub (tezosXPreviewnet ONLY \\u2014 DO NOT DEPLOY ELSEWHERE)\\n/// @notice Stand-in for `ILayerZeroEndpointV2` so OFT-based contracts can be\\n///         deployed on the ephemeral tezosXPreviewnet chain, which has no real\\n///         LayerZero infrastructure.\\n/// @dev    Implements only `setDelegate(address)` \\u2014 the single endpoint method\\n///         invoked from `OAppCore`'s constructor. Cross-chain send/receive,\\n///         quoting, and config flows are intentionally absent and will not\\n///         work. Delete this contract and its deployment when previewnet is\\n///         decommissioned.\\ncontract EndpointV2Stub {\\n    event DelegateSet(address indexed oapp, address indexed delegate);\\n\\n    mapping(address oapp => address delegate) public delegates;\\n\\n    function setDelegate(address _delegate) external {\\n        delegates[msg.sender] = _delegate;\\n        emit DelegateSet(msg.sender, _delegate);\\n    }\\n}\\n\",\"keccak256\":\"0xaaefbd38b2ec446b479021061d7022b4b8a2f8d40fdf9b16b6307eb7866ca7bb\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080806040523461001657610114908161001c8239f35b600080fdfe6080806040526004361015601257600080fd5b600090813560e01c908163587cde1e1460a2575063ca5eb5e114603457600080fd5b34609f576020366003190112609f576004356001600160a01b03811690819003609b573380835260208390526040832080546001600160a01b031916831790557f6ee10e9ed4d6ce9742703a498707862f4b00f1396a87195eb93267b3d79839818380a380f35b5080fd5b80fd5b905034609b576020366003190112609b576001600160a01b036004358181169081900360da5783604091602095528085522054168152f35b8380fdfea26469706673582212209dc9b2c6d4b9f0c089a5a25a80be3c9fada5c77039a3d0ec88486a876da07bde64736f6c63430008160033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b600090813560e01c908163587cde1e1460a2575063ca5eb5e114603457600080fd5b34609f576020366003190112609f576004356001600160a01b03811690819003609b573380835260208390526040832080546001600160a01b031916831790557f6ee10e9ed4d6ce9742703a498707862f4b00f1396a87195eb93267b3d79839818380a380f35b5080fd5b80fd5b905034609b576020366003190112609b576001600160a01b036004358181169081900360da5783604091602095528085522054168152f35b8380fdfea26469706673582212209dc9b2c6d4b9f0c089a5a25a80be3c9fada5c77039a3d0ec88486a876da07bde64736f6c63430008160033",
+  "devdoc": {
+    "details": "Implements only `setDelegate(address)` — the single endpoint method         invoked from `OAppCore`'s constructor. Cross-chain send/receive,         quoting, and config flows are intentionally absent and will not         work. Delete this contract and its deployment when previewnet is         decommissioned.",
+    "kind": "dev",
+    "methods": {},
+    "title": "EndpointV2Stub (tezosXPreviewnet ONLY — DO NOT DEPLOY ELSEWHERE)",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Stand-in for `ILayerZeroEndpointV2` so OFT-based contracts can be         deployed on the ephemeral tezosXPreviewnet chain, which has no real         LayerZero infrastructure.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 12,
+        "contract": "contracts/mocks/tezosXPreviewnet/EndpointV2Stub.sol:EndpointV2Stub",
+        "label": "delegates",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_address)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_address)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      }
+    }
+  }
+}

@@ -19,14 +19,14 @@ You can find a complete overview of the configuration in the `WXTZ_fullConfig.lo
 
 ### Gasless Approval with ERC20Permit
 
-The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin. This allows users to approve token transfers via gasless signatures instead of on-chain transactions. 
+The token also implements the [ERC20Permit](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20#ERC20Permit) standard from Openzeppelin. This allows users to approve token transfers via gasless signatures instead of on-chain transactions.
 
 This feature leverages the [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) standard to facilitate off-chain authorization for token transfers.
-
 
 ## Deployment & setup
 
 The first step is to deploy the contract on all the chains you want to support. To do so, run the LayerZero deployment tool, and use `WXTZ` as the deployment tag:
+
 ```
 npx hardhat lz:deploy
 ```
@@ -34,12 +34,13 @@ npx hardhat lz:deploy
 ### Peer
 
 Then, you need to create a link between the contracts by running `setPeer()`. We created a script to make this easier:
+
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setPeer.ts
 ```
 
 > 🚨🚨 **NOTE** 🚨🚨
-> 
+>
 > Each `setPeer()` registers a one way connection between the contract on chain A and the contract on chain B. To create a link, you'll need to run the script twice by swapping the source and target networks.
 >
 > For security purposes, there is a 2 day timelock when you call `setPeer()`. Therefore, for each one-way connection, you'll need to run the script twice with a 2 day delay between calls.
@@ -47,12 +48,13 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 ### Config (optionnal)
 
 You can also setup the config of the token. The WXTZ config was setup by the Etherlink team manually because the default config on the pathways including Etherlink is not setup yet, the script used is for the moment private. If you want to apply the default config (if this default config has been setup by LayerZero on the pathway), you can use the `applyDefaultConfig.ts` script. You would need to modify it so that the script uses your OFT. Note that this script is doing the 2 sides of the pathway (e.g. Etherlink <> Ethereum AND Ethereum <> Etherlink). If you want to run it:
+
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/applyDefaultConfig.ts
 ```
 
 > 🚨🚨 **NOTE** 🚨🚨
-> 
+>
 > For Etherlink, the block confirmation number is set to 1 because we know that the DVNs used in our config are running **a high latency node**. Be careful though; if you set up a number too low for the chain and the DVNs are using classic nodes, it could lead to money lost.
 
 ### Options
@@ -60,17 +62,19 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 Another important point is the "option" part. You have to specify the amount of gas you will use on the destination chain. We enforced that option on all the pathways for the WXTZ so you don't have to worry about. Here is the [LayerZero official documentation](https://docs.layerzero.network/v2/developers/evm/protocol-gas-settings/options) about this subject.
 
 You can enforce the option by running:
+
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> scripts/setEnforcedOption.ts
 ```
 
 > 🚨🚨 **NOTE** 🚨🚨
-> 
+>
 > The gas calculation is different on Etherlink so you will have to rise the gas amount for the option compare to the other EVM chains.
 
 ### Debug
 
 If you want to check all the information about your OFT, you can use the `getFullConfig.ts` script. First you need to modify the addresses, the chains and the providers in the script. Then you can run it:
+
 ```
 npx hardhat run scripts/getFullConfig.ts >> WXTZ_fullConfig_after.log
 ```
@@ -104,6 +108,7 @@ targetNetworkName=<TARGET_NETWORK> npx hardhat run --network <SOURCE_NETWORK> sc
 ## Tests
 
 If you want to run the tests for the WXTZ:
+
 ```
 npx hardhat test test/WXTZ.test.ts
 ```
@@ -111,6 +116,7 @@ npx hardhat test test/WXTZ.test.ts
 **NB:** we do not test the OFT part here except for some basic errors because we can't easily reproduce a multi-chain setup with on one side Etherlink and on the other side a non-etherlink chain in hardhat tests.
 
 But if you need to do a real test to be sure the contracts are well connected on the different chains, you can run a script to send a token like this:
+
 ```
 targetNetworkName=<TARGET_NETWORK> npx hardhat run --network etherlink scripts/sendToken.ts
 ```
@@ -146,6 +152,7 @@ Whether the WXTZs are bridged or not, this token, like all the other tokens on E
 ## Helpers
 
 We added some scripts at the root of the project (for the moment all related to the WXTZ to facilitate his deployment and setup):
+
 - `mapWXTZ.sh` - use to generate a file with all the details of the pathways
 - `fullMesh.sh` - use to setPeer the different WXTZ on all the pathways
 - `setEnforcedOption.sh` - use to enforce the option on the WXTZ on all the pathways
